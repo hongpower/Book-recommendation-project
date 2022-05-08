@@ -1,0 +1,97 @@
+/* 자동완성 결과창 : */
+
+*{
+    text-align: center;
+    font: rgb(126, 105, 85);
+}
+
+.search-result-book-img{
+    display: inline-block;
+    width: 120px;
+    height: 180px;
+}
+
+.search-result-wishlist-btn{
+    width: 20px;
+    height: 20px;
+}
+
+.search-result-like-btn, .search-result-dislike-btn{
+    width: 30px;
+    height: 30px;
+}
+
+/*search 페이지의 검색 바*/
+td{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+td > span{
+    font-size: 20pt;
+    margin-left: 550px;
+    width: 1000px;
+    background-color: transparent;
+}
+b{
+    font-weight: 900;
+}
+.big-search-bar{
+    height: 30px;
+    width: 250px;
+    font-size: 17pt;
+    border: none;
+    outline: none;
+    background-color: rgba(254,254,254,0.5);
+}
+
+td > button[type="submit"]{
+    height: 35px;
+    width: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+/*정보 보여주는 곳 레이아웃*/
+.search-result-container{
+}
+.search-result-book{
+    display: inline-block;
+    width: 1000px;
+    height: 200px;
+}
+.search-result-book-img{
+    display: inline-block;
+}
+.search-result-info{
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    width: 600px;
+    height: 200px;
+    text-align: left;
+}
+.search-result-title{
+    font-size: 20pt;
+    font-style: bold;
+}
+.search-result-author{
+    font-size: 15pt;
+}
+.search-result-isbn13{
+    font-size: 10pt;
+}
+
+/* 페이지 관련 */
+.page-container{
+    padding-top: 150px;
+    height: 170px;
+}
+.page-directions > a{
+    font-color: rgb(126, 105, 85);
+    padding: 15px;
+    margin: 50px;
+    cursor: pointer;
+    border: rgb(126, 105, 85) 2px solid;
+}

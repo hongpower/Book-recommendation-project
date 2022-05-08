@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main page</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+
+</head>
+<body>
+    <header>
+        <div>
+            <div>
+                <nav>
+                    <ul id="left-nav">
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Test</a></li>
+                        <li><a href="#">Recommendation</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">AboutUs</a></li>
+                    </ul>
+                    <ul id="right-nav">
+                        <li><a href="#">Search</a></li>
+                        {% if user_id %}
+                        <li class="menu"><a href="#">{{user_id}}</a>
+                            <ul class="hide">
+                                <li><a href="#">메뉴 1</a></li>
+                                <li><a href="#">메뉴 2</a></li>
+                                <li><a href="#">메뉴 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href=" {% url 'logout' %} ">logout</a></li>
+                        {% else %}
+                            <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-start">
+        <article>
+            <div id='modal'>
+                <div class="close">닫기</div>
+                <div class="modal-content">
+                    <div id="top-box">
+                        <div id="left-box"></div>
+                        <div id="right-box"></div>
+                    </div>
+                    <div id="bottom-box">
+                        <div id="bottom-small-box"></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

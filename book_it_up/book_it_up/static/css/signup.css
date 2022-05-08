@@ -1,0 +1,161 @@
+@font-face{
+    font-family: "hangeul";
+    src: url("../images/FontsFree-Net-Rockinsoda.ttf")
+}
+@font-face{
+    font-family: "silgothic";
+    src: url("../images/silgothic.ttf")
+}
+@font-face{
+    font-family: "boldfont";
+    src: url("../images/theboldfont.ttf")
+}
+
+@font-face {
+    font-family: 'Cafe24Oneprettynight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cafe24Dangdanghae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.2/Cafe24Dangdanghae.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Billow';
+    src: url('../images/Billow.otf')
+}
+@font-face {
+    font-family: 'barry';
+    src: url('../images/barry.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TmonMonsori';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: "Cafe24Oneprettynight";
+    letter-spacing: 1pt;
+    word-spacing: 2pt;
+    border: none;
+    outline: none;
+}
+
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.227),rgba(0, 0, 0, 0.2)) , url('../images/book-main4.jpg');
+    background-size: 100%;
+    text-align: center;
+    display: block;
+    position: relative;
+}
+
+.background-shadow{
+    height: 1000px;
+}
+
+.container{
+    margin: 10%;
+    margin-top:2%;
+    height: 650px;
+    background-color: rgba(252, 249, 245, 0.9);
+    border-radius: 60px;
+}
+.form{
+
+}
+.form-group label{
+    font-size: 13pt;
+    text-align: left;
+}
+.form-group input{
+    height: 15px;
+    font-size: 13px;
+    width:150px;
+}
+#id-check{
+    width: 30px;
+}
+
+
+.form-group:nth-child(3){
+}
+.row{
+    margin: 1%;
+}
+.regi2{
+    padding-top: 1.2%;
+}
+
+h1{
+    padding-top: 80px;
+    font-size: 50px;
+    color: rgba(0, 0, 0, 1);
+}
+
+label{
+    font-size: 25px;
+}
+input[type="text"], textarea{
+    background: white;
+}
+
+input[type='radio']{
+    width: 20px;
+    margin: 5px;
+}
+
+
+input[type='password'],textarea{
+    background: white;
+}
+input[type='button']{
+    padding:0px;
+    margin:0px;
+}
+
+input, button{
+    margin: 20px;
+    font-size: 20px;
+    height: 25px;
+    background: transparent;
+    cursor: pointer;
+    width: 50px;
+}
+
+button{
+    transition: all .3s ease-in;
+    background-color: lightgray;
+    width: 300px;
+}
+
+button:hover{
+    transform: scale(1.1);
+}
+.btn1{
+    border: 0.5px solid black;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 10px;
+
+}
+.btn2{
+    border: 0.5px solid black;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 10px;
+}

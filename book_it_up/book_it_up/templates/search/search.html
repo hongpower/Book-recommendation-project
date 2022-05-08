@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 페이지</title>
+    <script type="text/javascript">
+        // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
+        var userId = "{{ user_id }}"
+    </script>
+<!--    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--    <link rel="stylesheet" href="{% static 'css/index-header.css' %}">-->
+<!--    <link rel="stylesheet" href="{% static 'css/index-section.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+
+    <script src="{% static 'js/search_auto_complete.js' %}"></script>
+
+    <script src="https://kit.fontawesome.com/e0d225eaba.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header>
+        <div>
+            <div>
+                <nav>
+                    {% if user_id %}
+                    <ul class="left-nav">
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/test?user_id={{user_id}}">Test</a></li>
+                        <li class="menu"><a href="#">Recommendation</a>
+                            <ul class="hide">
+                                <li class="menu1"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
+                                <li class="menu1"><a href="#">메뉴 2</a></li>
+                                <li class="menu1"><a href="#">메뉴 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">AboutUs</a></li>
+                    </ul>
+                    <ul class="right-nav">
+                            <li  style="width: 170px;">
+
+
+                                <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
+                                    <div class="search-box">
+                                        <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+<!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
+                                        <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+
+                            </li>
+                            <li class="menu"><a href="#">{{user_id}}</a>
+                                <ul class="hide">
+                                    <li class="menu1"><a href="{% url 'mysite' %}">메뉴 1</a></li>
+                                    <li class="menu1"><a href="test?user_id={{user_id}}">메뉴 2</a></li>
+                                    <li class="menu1"><a href="/hi">메뉴 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href=" {% url 'logout' %} ">logout</a></li>
+                        </ul>
+                {% endif %}
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-start">
+
+        <form method="get" action=".">
+            <table>
+                <tr>
+                    <div>
+                        <td>
+                            <span>
+                                <input name="q" type="text" class="big-search-bar">
+                            </span>
+                        </td>
+                        <td>
+                            <button type="submit" value='' style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
+                        </td>
+                    </div>
+                </tr>
+            </table>
+        </form>
+
+    </section>
+    <section class="search-result-container">
+            {% if query %}
+                <br>
+                <h4>총 검색 결과수 : <b>{{ page.paginator.count }}권</b></h4>
+                <br>
+                <h4>현재 페이지 : 총 {{ page.paginator.num_pages }}페이지 중 <b>{{ page.number }}페이지</b></h4>
+
+                {% for result in page.object_list %}
+
+                    <div class="search-result-book">
+                        <div class="book-img-container search-result-book-img" >
+                            <img src="{{ result.object.cover }}" name="{{ result.object.book_id }}" class="book-img">
+                            <span><i class="search-result-wishlist-btn fas fa-heart wishlist-btn btns fa-1x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                            <span><i class="fas fa-thumbs-up like-btn btns fa-2x search-result-like-btn" style='position: absolute; top: 20%; left: 43%; z-index: 30'></i></span>
+                            <span><i class="fas fa-thumbs-down dislike-btn btns fa-2x search-result-dislike-btn" style='position: absolute; top: 60%; left: 43%; z-index: 30'></i></span>
+                        </div>
+                        <div class="search-result-info">
+                            <span name="{{ result.object.book_id }}" class="search-result-title">{{ result.object.title }}</span><br>
+                            <span class="search-result-author">{{ result.object.author }}</span><br>
+                            <span class="search-result-isbn13">isbn:{{ result.object.book_id }}</span><br>
+                            <span class="search-result-publisher">{{ result.object.publisher }}</span><br>
+                             <span class="search-result-price">₩{{ result.object.price }}</span><br>
+                            <span class="search-result-category">{{ result.object.category }}</span><br>
+                            <span class="search-result-pubdate">출간일:{{ result.object.pubdate }}</span><br>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>해당 책이 없습니다.</p>
+                {% endfor %}
+
+                <article class="page-container">
+                {% if page.has_previous or page.has_next %}
+                        <div class="page-directions">
+                            {% if page.has_previous %}
+                            <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">이전 페이지</a>
+                            {% else %}
+                            <a>이전 페이지</a>
+                            {% endif %}
+
+                            {% if page.has_next %}
+                            <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">다음 페이지</a>
+                            {% else %}
+                            <a>다음 페이지</a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% else %}
+
+                {% endif %}
+                </article>
+
+                <article>
+                    <div id='modal'>
+                        <div class="close">닫기</div>
+                        <div class="modal-content">
+                            <div id="top-box">
+                                <div id="left-box"></div>
+                                <div id="right-box"></div>
+                            </div>
+                            <div id="bottom-box">
+                                <div id="bottom-small-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+    </section>
+</body>

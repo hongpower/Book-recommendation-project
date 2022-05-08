@@ -1,0 +1,294 @@
+@font-face{
+    font-family: "hangeul";
+    src: url("../images/FontsFree-Net-Rockinsoda.ttf")
+}
+@font-face{
+    font-family: "silgothic";
+    src: url("../images/silgothic.ttf")
+}
+@font-face{
+    font-family: "boldfont";
+    src: url("../images/theboldfont.ttf")
+}
+
+@font-face {
+    font-family: 'Cafe24Oneprettynight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cafe24Dangdanghae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.2/Cafe24Dangdanghae.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Billow';
+    src: url('../images/Billow.otf')
+}
+@font-face {
+    font-family: 'barry';
+    src: url('../images/barry.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TmonMonsori';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'star';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Syongsyong.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    color: black;
+    font-family: "Cafe24Oneprettynight";
+    letter-spacing: 1pt;
+    word-spacing: 2pt;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    color: black;
+    font-family: "Cafe24Oneprettynight";
+    letter-spacing: 1pt;
+    word-spacing: 2pt;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+header {
+    width: 100%;
+    height: 60px;
+    display: block;
+    background-image: url('../images/book-main4.jpg');
+    background-size: 100%;
+    font-family: "Cafe24Oneprettynight";
+}
+header > div{
+    font-size: 30pt;
+    height: 60px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+header > div > div:nth-child(1){
+    height: 200px;
+    display: block;
+    font-size: 10pt;
+}
+nav{
+    width: 100%;
+    height: 60px;
+    /* background-color: rgb(126, 105, 85); */
+    background-color: transparent;
+    display: block;
+    position: fixed;
+    z-index: 10;
+    font-family: "Cafe24Oneprettynight"
+}
+
+nav > ul{
+    float: flex;
+    margin-top: 20px;
+}
+
+
+nav > ul > li > a{
+    color: antiquewhite;
+    font-size: 13pt;
+    font-family: "Cafe24Oneprettynight"
+}
+
+
+.left-nav{
+    list-style-type: none;
+    display: flex;
+    float: left;
+}
+.left-nav *{
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+.right-nav{
+    list-style-type: none;
+    display: flex;
+    float: right;
+}
+
+.right-nav *{
+    margin-left: 1%;
+    margin-right: 10%;
+    width: 120px;
+    text-align: center;
+}
+
+
+
+.down {
+    background-color: rgb(236, 234, 230);
+    /* background-color: rgb(202, 186, 170); */
+    /* border-bottom:solid 1pt rgb(57, 63, 67); */
+    -webkit-transition-duration:0.2s;
+    -webkit-transition-timing-function:ease;
+    transition-duration:1s;
+    transition-timing-function:ease;
+}
+
+.down > ul > li > a{
+    color:rgb(57, 63, 67);
+}
+
+.on-page{
+    text-decoration: underline;
+    text-underline-position: under;
+    box-shadow: inset 0 -1px;
+}
+
+.menu1 {
+    background: #e9ecef;
+}
+.menu a{cursor:pointer;}
+.menu .hide{display:none;}
+
+.swiper-wrapper{
+    width: 100%;
+    padding-left: 1%
+
+}
+.swiper-slide{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* search 관련 */
+.search-box{
+    background-color: transparent;
+    width: 160px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius:7px;
+    border: 1.8px solid antiquewhite;
+    position: relative;
+    top: -5px;
+}
+
+.ac-results{
+    margin: 0%;
+    margin-top: 1%;
+    margin-left: 3%;
+    padding-left: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 125px;
+    background-color: transparent;
+    border-radius:7px;
+
+}
+.result-wrapper{
+    background-color: transparent;
+    width: 130px;
+    border: 1.8px solid antiquewhite;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 3%;
+    padding: 5%;
+    font-size: 9px;
+    border-radius: 3px;
+    text-align: left;
+}
+
+.result-wrapper a{
+    color: antiquewhite;
+}
+.search-box{
+    position: relative;
+    top: -5px;
+}
+
+.search-box input, .search-box button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: antiquewhite;
+}
+.search-box button{
+    width: 20px;
+}
+.search-box input[name="q"]{
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+.search-box button i{
+    width: 20px;
+    color: antiquewhite;
+}
+.search_bar{
+    background-color: antiquewhite;
+}
+
+.down > ul > li .search-box{
+    color:rgb(57, 63, 67);
+    border: 1px solid rgb(57, 63, 67);
+    background-color: #faf5ef;
+}
+
+.down > ul > li .search-box input{
+    color:rgb(57, 63, 67);
+
+}
+
+.down > ul > li .search-box button >i{
+    width: 20px;
+    color: black;
+}
+
+.down > ul > li .ac-results{
+    margin: 0%;
+    margin-top: 1%;
+    margin-left: 3%;
+    padding-left: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 125px;
+    background-color: transparent;
+    border-radius:7px;
+
+}
+.down .result-wrapper{
+    background-color: rgb(236, 234, 230);
+    width: 130px;
+    border: 1px solid rgb(57, 63, 67);
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 3%;
+    padding: 5%;
+    font-size: 9px;
+    border-radius: 3px;
+    text-align: left;
+}
+
+.down .result-wrapper a{
+    color: black;
+}
+

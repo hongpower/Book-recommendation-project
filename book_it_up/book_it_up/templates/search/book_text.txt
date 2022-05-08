@@ -1,0 +1,8 @@
+{{ object.book_id.get_full_name }}
+{{ object.title }}
+{{ object.cover }}
+{{ object.author }}
+{{ object.publisher }}
+{{ object.price }}
+{{ object.category }}
+{{ object.pubdate }}

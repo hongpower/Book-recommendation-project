@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <style>
+
+    </style>
+
+    <script>
+        $(function (){
+            var book_photo = 10;
+            //alert('hi');
+            $.ajax({
+                url: 'book_photo/',
+                data: { 'book_photo': book_photo },
+                dataType: 'json',
+                success: function (data) {
+                    var str = '';
+                    //console.log(data)
+                    var lit = data['books']
+                    //console.log(lit[0])
+                    for (i in lit) {
+                        //console.log(lit[i].cover_large)
+                        str += "<img src=" + lit[i].cover_large + " name=" + lit[i].book_id + ">" + "<br>"
+                    }
+                    //alert(str)
+                    $("#img_container").empty()
+                    $('#img_container').html('<ul>' + str + '</ul>');
+
+                    //for (key in data) {
+                    //str += '<img src="data[key]">' + key + ':' + data[key] + '</li>';
+
+                    //alert(str)
+                    //$("#container").empty()
+                    //$('#container').html('<ul>' + str + '</ul>');
+                }
+            })
+        })
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>test</h1>
+
+    <div id="img_container">
+
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>선호도 페이지</title>
+    <link rel="stylesheet" href="{% static 'css/index-header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+    <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+
+    <script type="text/javascript">
+        // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
+        var userId = "{{ user_id }}"
+    </script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{% static 'js/test.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/search_auto_complete.js'%}"></script>
+
+    <script src="https://kit.fontawesome.com/e0d225eaba.js" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+    <header>
+        <div>
+            <div>
+                <nav>
+                    {% if user_id %}
+                        <ul class="left-nav">
+                            <li><a href="#">Logo</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/test?user_id={{user_id}}">Preference</a></li>
+                            <li class="menu"><a href="#">Recommendation</a>
+                                <ul class="hide">
+                                    <li class="menu1"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
+                                    <li class="menu1"><a href="#">메뉴 2</a></li>
+                                    <li class="menu1"><a href="#">메뉴 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">AboutUs</a></li>
+                        </ul>
+                        <ul class="right-nav">
+                            <li  style="width: 170px;">
+                                <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
+                                    <div class="search-box">
+                                        <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+<!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
+                                        <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </li>
+                            <li class="menu"><a href="#">{{user_id}}</a>
+                                <ul class="hide">
+                                    <li class="menu1"><a href="{% url 'mysite' %}">메뉴 1</a></li>
+                                    <li class="menu1"><a href="test?user_id={{user_id}}">메뉴 2</a></li>
+                                    <li class="menu1"><a href="#">메뉴 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href=" {% url 'logout' %} ">logout</a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="left-nav">
+                            <li><a href="/unlogged">Logo</a></li>
+                            <li><a href="/unlogged">Home</a></li>
+                            <li><a href="/unlogged">Test</a></li>
+                            <li><a href="/unlogged">Recommendation</a></li>
+                            <li><a href="/unlogged">Community</a></li>
+                            <li><a href="/unlogged">AboutUs</a></li>
+                        </ul>
+                        <ul class="right-nav">
+                            <li><a href="/unlogged">Search</a></li>
+                            <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
+                        </ul>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="page-start">
+        <article>
+            <div class="book-img-container">
+                <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
+                <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
+            </div>
+            <div>
+                <span class="btn">다음 책으로 이동</span>
+            </div>
+        </article>
+        <article>
+            <div id='modal'>
+                <div class="close">닫기</div>
+                <div class="modal-content">
+                    <div id="top-box">
+                        <div id="left-box"></div>
+                        <div id="right-box"></div>
+                    </div>
+                    <div id="bottom-box">
+                        <div id="bottom-small-box"></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+</html>

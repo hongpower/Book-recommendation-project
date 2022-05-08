@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main page</title>
+    <link rel="stylesheet" href="{% static 'css/index-header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <div>
+                <nav>
+                    <ul id="left-nav">
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Test</a></li>
+                        <li class="menu"><a href="#">Recommendation</a>
+                            <ul class="hide">
+                                <li class="menu1"><a href="{% url 'rcm'%}">메뉴 1</a></li>
+                                <li class="menu1"><a href="#">메뉴 2</a></li>
+                                <li class="menu1"><a href="#">메뉴 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">AboutUs</a></li>
+                    </ul>
+                    <ul id="right-nav">
+                        <li><a href="#">Search</a></li>
+                        {% if user_id %}
+                        <li class="menu"><a href="#">{{user_id}}</a>
+                            <ul class="hide">
+                                <li class="menu1"><a href="{% url 'mysite' %}">메뉴 1</a></li>
+                                <li class="menu1"><a href="{% url 'test' %}">메뉴 2</a></li>
+                                <li class="menu1"><a href="#">메뉴 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href=" {% url 'logout' %} ">logout</a></li>
+                        {% else %}
+                            <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div id="quote-box">
+                <p class="quote">
+                    SO LITTLE <b>TIME,</b>
+                </p>
+                <p class="quote2">
+                    SO MANY <b>BOOKS</b>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-start">
+        <article id="rank">
+            <div></div>
+            평점 순위
+        </article>
+        <article id="popularity">
+            인기도서
+        </article>
+        <article id="youtube">
+            오늘의 도서 유튜브 asmr
+        </article>
+        <article id="light-books" class="container" >
+            <div class="swiper-container">
+                <div  class="swiper-wrapper">
+                    <div class="swiper-slide">
+                            {% with books=short_books|slice:"0:5" %}
+                                {% for book in  books%}
+                                    
+                                    <div class="book-img-container">
+                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    </div>
+                                    
+                                {% endfor %}
+                            {% endwith%}
+                    </div>
+                    <div class="swiper-slide">
+                            {% with books=short_books|slice:"5:10" %}
+                                {% for book in  books%}
+                                    
+                                    <div class="book-img-container">
+                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    </div>
+                                    
+                                {% endfor %}
+                            {% endwith%}
+                    </div>
+                    <div class="swiper-slide">
+                            {% with books=short_books|slice:"10:15" %}
+                                {% for book in  books%}
+                                    
+                                    <div class="book-img-container">
+                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    </div>
+                                    
+                                {% endfor %}
+                            {% endwith%}
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+                <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+            </div>
+        </article>
+        <article id="night-books">
+            잠안올 때 읽기 좋은 책
+        </article>
+        <article>
+            <div id='modal'>
+                <div class="close">닫기</div>
+                <div class="modal-content">
+                    <div id="top-box">
+                        <div id="left-box"></div>
+                        <div id="right-box"></div>
+                    </div>
+                    <div id="bottom-box">
+                        <div id="bottom-small-box"></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
