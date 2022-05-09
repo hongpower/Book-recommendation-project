@@ -87,8 +87,8 @@ body{
     font-size: 13px;
     width:150px;
 }
-#id-check{
-    width: 30px;
+#id-check, .btn-nickname-chk{
+    width: 90px;
 }
 
 

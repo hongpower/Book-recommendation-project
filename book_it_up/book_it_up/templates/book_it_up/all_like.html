@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>하이</title>
+    <title>좋아요 확인 페이지</title>
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
@@ -14,21 +14,23 @@
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all_page.css' %}">
     <link rel="stylesheet" href="{% static 'css/star.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="{% static 'js/rcm.js' %}"></script>
     <script src="{% static 'js/nav.js' %}"></script>
-    <script src="{% static 'js/modal.js' %}"></script>
     <script src="{% static 'js/swiper.js' %}"></script>
     <script src="{% static 'js/swiper.min.js' %}"></script>
-    <script src="{% static 'js/profile.js' %}"></script>
     <script src="{% static 'js/history.js' %}"></script>
     <script src="{% static 'js/star.js' %}"></script>
     <script src="{% static 'js/all_like.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/search_auto_complete.js' %}"></script>
     <script>
 
     </script>
@@ -37,46 +39,56 @@
     <header>
         <div>
             <div>
-                <nav>
+                 <nav>
                     {% if user_id %}
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
-                            <li class="menu"><a href="#">Recommendation</a>
-                                <ul class="hide">
-                                    <li class="menu1"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="menu1"><a href="#">메뉴 2</a></li>
-                                    <li class="menu1"><a href="#">메뉴 3</a></li>
+                            <li><a href="/test?user_id={{user_id}}">Preference</a></li>
+                            <li class="menu">
+                                <div class="parent-menu">
+                                    <a href="#">Recommendation</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu"><a href="{% url 'rcm' %}"}>좋아요 기반 추천</a></li>
+                                    <li class="submenu"><a href="#">메뉴 2</a></li>
+                                    <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Community</a></li>
                             <li><a href="#">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="#">Search</a></li>
-                            <li class="menu"><a href="#">{{user_id}}</a>
-                                <ul class="hide">
-                                    <li class="munu1">
+                            <li style="width: 170px;">
+                                <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
+                                    <div class="search-box">
+                                        <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+<!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
+                                        <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </li>
+                            <li class="menu" id='my-info'>
+                                <div class="parent-menu">
+                                    <a href="#">{{user_id}}</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu" >
                                         <div class="card">
-                                            <h1>{{user_id}}</h1>
-                                            <p id="email"></p>
                                             <p id="nickname"></p>
-
                                         </div>
-                                    <li class=menu1 id="read_book"><a href="{% url 'history_register' %}"></a></li>
-                                    <li class="menu1"><a href="{% url 'mysite' %}">마이페이지</a></li>
-                                    <li class="menu1"><a href=" {% url 'logout' %} ">로그아웃</a></li>
                                     </li>
+                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
+                                    <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
-                            <li><a href=" {% url 'logout' %} ">logout</a></li>
                         </ul>
-                    {% else %}
+                        {% else %}
                         <ul class="left-nav">
                             <li><a href="/unlogged">Logo</a></li>
                             <li><a href="/unlogged">Home</a></li>
-                            <li><a href="/unlogged">Test</a></li>
+                            <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
                             <li><a href="/unlogged">AboutUs</a></li>
@@ -91,14 +103,13 @@
         </div>
     </header>
     <section class="page-start">
-        <article class="like-img-aricle">
+        <article class="like-img-article">
 
         </article>
         <article>
             <div class="btns">
                 <span class="btn" id="mysite-like-btn" ><a href="/mysite">접기</a></span>
-
-            </div>>
+            </div>
         </article>
         <article>
             <div id='modal'>

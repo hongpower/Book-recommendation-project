@@ -37,24 +37,25 @@
             <div>
                 <nav>
                     {% if user_id %}
-                    <ul class="left-nav">
-                        <li><a href="#">Logo</a></li>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/test?user_id={{user_id}}">Test</a></li>
-                        <li class="menu"><a href="#">Recommendation</a>
-                            <ul class="hide">
-                                <li class="menu1"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                <li class="menu1"><a href="#">메뉴 2</a></li>
-                                <li class="menu1"><a href="#">메뉴 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">AboutUs</a></li>
-                    </ul>
-                    <ul class="right-nav">
-                            <li  style="width: 170px;">
-
-
+                        <ul class="left-nav">
+                            <li><a href="#">Logo</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
+                            <li class="menu">
+                                <div class="parent-menu">
+                                    <a href="#">Recommendation</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
+                                    <li class="submenu"><a href="#">메뉴 2</a></li>
+                                    <li class="submenu"><a href="#">메뉴 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">AboutUs</a></li>
+                        </ul>
+                        <ul class="right-nav">
+                            <li style="width: 170px;">
                                 <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
                                     <div class="search-box">
                                         <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
@@ -62,18 +63,37 @@
                                         <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
                                     </div>
                                 </form>
-
                             </li>
-                            <li class="menu"><a href="#">{{user_id}}</a>
-                                <ul class="hide">
-                                    <li class="menu1"><a href="{% url 'mysite' %}">메뉴 1</a></li>
-                                    <li class="menu1"><a href="test?user_id={{user_id}}">메뉴 2</a></li>
-                                    <li class="menu1"><a href="/hi">메뉴 3</a></li>
+                            <li class="menu" id='my-info'>
+                                <div class="parent-menu">
+                                    <a href="#">{{user_id}}</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu" >
+                                        <div class="card">
+                                            <p id="nickname"></p>
+                                        </div>
+                                    </li>
+                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
+                                    <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
-                            <li><a href=" {% url 'logout' %} ">logout</a></li>
                         </ul>
-                {% endif %}
+                    {% else %}
+                        <ul class="left-nav">
+                            <li><a href="/unlogged">Logo</a></li>
+                            <li><a href="/unlogged">Home</a></li>
+                            <li><a href="/unlogged">Preferences</a></li>
+                            <li><a href="/unlogged">Recommendation</a></li>
+                            <li><a href="/unlogged">Community</a></li>
+                            <li><a href="/unlogged">AboutUs</a></li>
+                        </ul>
+                        <ul class="right-nav">
+                            <li><a href="/unlogged">Search</a></li>
+                            <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
+                        </ul>
+                    {% endif %}
                 </nav>
             </div>
         </div>

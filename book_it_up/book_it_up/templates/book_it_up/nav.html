@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -23,6 +24,8 @@
     <script src="{% static 'js/modal.js' %}"></script>
     <script src="{% static 'js/swiper.js' %}"></script>
     <script src="{% static 'js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/search_auto_complete.js'%}"></script>
+
 
 </head>
 <body>
@@ -57,14 +60,12 @@
                                 </form>
 
                             </li>
-                            <li class="menu"><a href="#">{{user_id}}</a>
+                            <li class="menu" id="my-info"><a href="#">{{user_id}}</a>
                                  <ul class="hide">
-                                    <li class="munu1">
+                                    <li class="menu1">
                                         <div class="card">
-                                            <h1>{{user_id}}</h1>
                                             <p id="email"></p>
                                             <p id="nickname"></p>
-
                                         </div>
                                     <li class=menu1 id="read_book"><a href="{% url 'read' %}"></a></li>
                                     <li class="menu1"><a href="{% url 'mysite' %}">마이페이지</a></li>
@@ -79,7 +80,7 @@
                         <ul class="left-nav">
                             <li><a href="/unlogged">Logo</a></li>
                             <li><a href="/unlogged">Home</a></li>
-                            <li><a href="/unlogged">Test</a></li>
+                            <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
                             <li><a href="/unlogged">AboutUs</a></li>

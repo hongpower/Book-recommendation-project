@@ -44,18 +44,21 @@
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
                             <li><a href="/test?user_id={{user_id}}">Preference</a></li>
-                            <li class="menu"><a href="#">Recommendation</a>
-                                <ul class="hide">
-                                    <li class="menu1"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="menu1"><a href="#">메뉴 2</a></li>
-                                    <li class="menu1"><a href="#">메뉴 3</a></li>
+                            <li class="menu">
+                                <div class="parent-menu">
+                                    <a href="#">Recommendation</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu"><a href="/recommendation"}>메뉴 1</a></li>
+                                    <li class="submenu"><a href="#">메뉴 2</a></li>
+                                    <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Community</a></li>
                             <li><a href="#">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li  style="width: 170px;">
+                            <li style="width: 170px;">
                                 <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
                                     <div class="search-box">
                                         <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
@@ -63,28 +66,28 @@
                                         <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
                                     </div>
                                 </form>
-
                             </li>
-                            <li class="menu"><a href="#">{{user_id}}</a>
-                                <ul class="hide">
-                                    <li class="munu1">
+                            <li class="menu" id='my-info'>
+                                <div class="parent-menu">
+                                    <a href="#">{{user_id}}</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu" >
                                         <div class="card">
-                                            <h1>{{user_id}}</h1>
-                                            <p id="email"></p>
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class=menu1 id="read_book"><a href="{% url 'history_register' %}"></a></li>
-                                    <li class="menu1"><a href="{% url 'mysite' %}">마이페이지</a></li>
+                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
+                                    <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
-
                         </ul>
                     {% else %}
                         <ul class="left-nav">
                             <li><a href="/unlogged">Logo</a></li>
                             <li><a href="/unlogged">Home</a></li>
-                            <li><a href="/unlogged">Test</a></li>
+                            <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
                             <li><a href="/unlogged">AboutUs</a></li>
@@ -108,14 +111,6 @@
     </header>
 
     <section class="page-start">
-        <article id="rank">
-            <div></div>
-            평점 순위
-        </article>
-        <article id="popularity">
-            인기도서
-        </article>
-
         <article id="youtube">
             <h2>#연애세포 뿜뿜일 때, #설레고 싶은 날엔</h2>
             <div class="swiper-container">
@@ -219,9 +214,14 @@
                 <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
             </div>
+
         </article>
         <article id="timely-books" class="container">
-            <h2> #감수성 풍부할 때, #잠안올 때, #인생에 지칠 때</h2>
+            {% if is_daytime %}
+                <h2> #성공하고싶을 때, #동기부여 받고 싶을 때, #자극받기 좋은</h2>
+            {% else %}
+                <h2> #감수성 풍부할 때, #잠안올 때, #인생에 지칠 때</h2>
+            {% endif %}
             <div class="swiper-container">
                 <div  class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -271,6 +271,13 @@
                 <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
             </div>
+        </article>
+         <article id="rank">
+            <div></div>
+            평점 순위
+        </article>
+        <article id="popularity">
+            인기도서
         </article>
         <article>
             <div id='modal'>

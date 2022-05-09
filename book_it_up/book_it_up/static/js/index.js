@@ -3,7 +3,27 @@ $(function(){
     var $page = $('.page-start')
     var $window = $(window)
     var pageOffsetTop = $page.offset().top
-    
+    var userId= $('#my-info>div>a').text()
+
+    // nav바 오른쪽 my-info 생성
+    $.ajax({
+        url: "/profile",
+        data:{'user_id':userId},
+        dataType: 'json',
+        success: function (data) {
+            var bookStr=''
+            var nickname=data['nickname']
+            var email = data['user_email']
+            var read_book=data['read_book']
+
+            bookStr += '읽은 책 수: '+ read_book +'권'
+
+            //$('#nickname').html(nickname)
+            //$('#email').html(email)
+            $('#read_book>a').html(bookStr)
+
+        }
+    })
     // window사이즈가 resize 되면 top 값 다시 계산하기 :
     $window.resize(function(){
         pageOffsetTop = $page.offset().top;
@@ -30,13 +50,22 @@ $(function(){
     new Swiper('.swiper-container', {
         direction: 'horizontal',
     })
-    $(".menu>a").click(function(){
-        var submenu=$(this).next("ul");
-        if(submenu.is(":visible")){
+    $(".parent-menu > a").click(function(){
+        var submenu=$(this).parent().next("ul");
+
+        // 클릭된 메뉴에서 class가 menu인 li태그 선택 :
+        var menuContainer=$(this).parent().parent()
+        if (submenu.is(":visible")){
             submenu.slideUp();
-        }
-        else{
+            // 메뉴가 슬라이드 끝까지 슬라이드 업되고 메뉴가 사라지게 하기 위해서 딜레이 :
+            setTimeout(function(){
+               menuContainer.removeClass("full-menu")
+            }, 200)
+        } else {
             submenu.slideDown();
+            setTimeout(function(){
+                menuContainer.prop("class", "full-menu")
+            }, 200)
         }
     })
 
@@ -49,4 +78,7 @@ function GetUserId(){
     var user_id = '<%= Session["user_id"] %>'
 }
 
+$(function(){
 
+
+})

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/star.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -25,7 +26,6 @@
     <script src="{% static 'js/modal.js' %}"></script>
     <script src="{% static 'js/swiper.js' %}"></script>
     <script src="{% static 'js/swiper.min.js' %}"></script>
-    <script src="{% static 'js/profile.js' %}"></script>
     <script src="{% static 'js/history.js' %}"></script>
     <script src="{% static 'js/star.js' %}"></script>
     <script src="{% static 'js/mysite.js' %}"></script>
@@ -42,41 +42,51 @@
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
-                            <li class="menu"><a href="#">Recommendation</a>
-                                <ul class="hide">
-                                    <li class="menu1"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="menu1"><a href="#">메뉴 2</a></li>
-                                    <li class="menu1"><a href="#">메뉴 3</a></li>
+                            <li><a href="/test?user_id={{user_id}}">Preference</a></li>
+                            <li class="menu">
+                                <div class="parent-menu">
+                                    <a href="#">Recommendation</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu"><a href="{% url 'rcm' %}"}>좋아요 기반 추천</a></li>
+                                    <li class="submenu"><a href="#">메뉴 2</a></li>
+                                    <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Community</a></li>
                             <li><a href="#">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="#">Search</a></li>
-                            <li class="menu"><a href="#">{{user_id}}</a>
-                                <ul class="hide">
-                                    <li class="munu1">
+                            <li style="width: 170px;">
+                                <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
+                                    <div class="search-box">
+                                        <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+<!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
+                                        <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </li>
+                            <li class="menu" id='my-info'>
+                                <div class="parent-menu">
+                                    <a href="#">{{user_id}}</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu" >
                                         <div class="card">
-                                            <h1>{{user_id}}</h1>
-                                            <p id="email"></p>
                                             <p id="nickname"></p>
-
                                         </div>
-                                    <li class=menu1 id="read_book"><a href="{% url 'history_register' %}"></a></li>
-                                    <li class="menu1"><a href="{% url 'mysite' %}">마이페이지</a></li>
-                                    <li class="menu1"><a href=" {% url 'logout' %} ">로그아웃</a></li>
                                     </li>
+                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
+                                    <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
-                            <li><a href=" {% url 'logout' %} ">logout</a></li>
                         </ul>
-                    {% else %}
+                        {% else %}
                         <ul class="left-nav">
                             <li><a href="/unlogged">Logo</a></li>
                             <li><a href="/unlogged">Home</a></li>
-                            <li><a href="/unlogged">Test</a></li>
+                            <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
                             <li><a href="/unlogged">AboutUs</a></li>
@@ -91,31 +101,49 @@
         </div>
     </header>
     <section class="page-start">
-        <article class="info">
-
+        <article class="top-container">
+            <article class="left-container">
+                <div class="info">
+                </div>
+                <div class="usage">
+                </div>
+            </article>
+            <article class="right-container">
+                <div class="like-img-container">
+                    <h2>좋아요 누른 책</h2>
+                    <div class="full-btn">
+                        <span class="btn" id="mysite-like-btn" >
+                            <a href="/mysite/all_like">더보기</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="wish-img-container">
+                    <h2>찜한 책</h2>
+                    <div class="full-btn">
+                        <span class="btn" id="mysite-wishlist-btn" >
+                            <a href="/mysite/all_wish">더보기</a>
+                        </span>
+                    </div>
+                </div>
+            </article>
         </article>
-        <article class="usage">
+        <article class="bottom-container">
 
+            <div class="board-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>리뷰 제목</th>
+                                <th>내용</th>
+                                <th>작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody class="board-container">
+                        </tbody>
+                    </table>
+            </div>
         </article>
 
-        <article class="like-img-aricle">
-
-        </article>
-        <article>
-            <div class="btns">
-                <span class="btn" id="mysite-like-btn" ><a href="/mysite/all_like">더보기</a></span>
-
-            </div>>
-        </article>
-
-        <article class="wish-img-article">
-
-        </article>
-        <article>
-            <div class="btns">
-                <span class="btn" id="mysite-wishlist-btn" ><a href="/mysite/all_wish">더보기</a>></span>
-            </div>>
-        </article>
         <article>
             <div id='modal'>
                 <div class="close">닫기</div>
@@ -130,21 +158,7 @@
                 </div>
             </div>
         </article>
-        <article class="board_table">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>리뷰 제목</th>
-                        <th>내용</th>
-                        <th>작성일</th>
-                    </tr>
-                </thead>
-                <tbody class="board-container">
 
-                </tbody>
-
-            </table>
-        </article>
     </section>
 
 

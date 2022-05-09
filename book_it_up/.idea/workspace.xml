@@ -2,117 +2,111 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1ffe1ab-91c8-4c0a-bc7f-2890f8f98931" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/book_it_up.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/filters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/search_indexes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/book_img.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/index-header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/index-section.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/modal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/nav.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/search_auto_complete.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/signup.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/star.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/swiper.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/test.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/12롯데마트행복Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/Arita-buriSB.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/BMDOHYEON_otf.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/Billow.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/FontsFree-Net-Rockinsoda.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/HangeulNuriB.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/barry.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/book-main.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/book-main2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/book-main3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/book-main4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/book0main5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/dislike.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/grade_img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/heart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/like.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/silgothic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/theboldfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/all_like.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/all_wish.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/history.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/mysite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/nav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/rcm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/search_auto_complete.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/signup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/star.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/swiper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/swiper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/static/js/unlogged.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_like.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_wishlist.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/history.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/mysite.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/nav.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/unlogged.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/filters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/login/first-preference.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/login/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/login/register_parct.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/login/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/login/success.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/rcm/rcm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/search/book_search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/search/book_text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/templates/search/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_it_up/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django-haystack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rcm/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Final-project/Ideas/project_ideas.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Final-project/Meeting_minutes/220404_minutes.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Final-project/Meeting_minutes/220405_minutes.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Final-project/Meeting_minutes/220406_minutes.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Final-project/Meeting_minutes/220407_ㅡminutes.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Final-project/Meeting_minutes/220408_minutes.pdf" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/all_page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/history.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_it_up/static/css/mysite.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/.idea/book_it_up.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/filters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/css/index-header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/css/index-section.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/css/modal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/css/nav.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/css/swiper.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/12롯데마트행복Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/Arita-buriSB.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/BMDOHYEON_otf.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/Billow.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/FontsFree-Net-Rockinsoda.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/HangeulNuriB.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/barry.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/book-main.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/book-main2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/book-main3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/book-main4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/book0main5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/silgothic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/images/theboldfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/js/modal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/js/rcm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/js/swiper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/static/js/swiper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/book_it_up/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/book_it_up/mysite.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/book_it_up/nav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/book_it_up/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/filters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/login/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/login/prac.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/login/register_parct.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/login/signup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/login/success.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/login/third.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/templates/rcm/rcm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/book_it_up/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/filters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/login/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_it_up 2/rcm/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/css/index-header.css" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/css/index-header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/css/nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/css/nav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/css/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/css/signup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/css/test.css" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/css/test.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/all_like.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/all_like.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/all_wish.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/all_wish.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/mysite.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/mysite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/profile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/swiper.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/swiper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_like.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_like.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/mysite.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/mysite.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/unlogged.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/unlogged.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/rcm/rcm.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/rcm/rcm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/search/book_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/search/book_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django-haystack" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/generic_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/generic_views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rcm/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rcm/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

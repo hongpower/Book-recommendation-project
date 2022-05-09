@@ -4,13 +4,13 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>선호도 페이지</title>
-    <link rel="stylesheet" href="{% static 'css/index-header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'css/index-header.css' %}">-->
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 
     <script type="text/javascript">
@@ -29,7 +29,6 @@
 
 
 
-
 </head>
 <body>
     <header>
@@ -40,19 +39,22 @@
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/test?user_id={{user_id}}">Preference</a></li>
-                            <li class="menu"><a href="#">Recommendation</a>
-                                <ul class="hide">
-                                    <li class="menu1"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="menu1"><a href="#">메뉴 2</a></li>
-                                    <li class="menu1"><a href="#">메뉴 3</a></li>
+                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
+                            <li class="menu">
+                                <div class="parent-menu">
+                                    <a href="#">Recommendation</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
+                                    <li class="submenu"><a href="#">메뉴 2</a></li>
+                                    <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Community</a></li>
                             <li><a href="#">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li  style="width: 170px;">
+                            <li style="width: 170px;">
                                 <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
                                     <div class="search-box">
                                         <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
@@ -61,14 +63,21 @@
                                     </div>
                                 </form>
                             </li>
-                            <li class="menu"><a href="#">{{user_id}}</a>
-                                <ul class="hide">
-                                    <li class="menu1"><a href="{% url 'mysite' %}">메뉴 1</a></li>
-                                    <li class="menu1"><a href="test?user_id={{user_id}}">메뉴 2</a></li>
-                                    <li class="menu1"><a href="#">메뉴 3</a></li>
+                            <li class="menu" id='my-info'>
+                                <div class="parent-menu">
+                                    <a href="#">{{user_id}}</a>
+                                </div>
+                                <ul class="hide-menu">
+                                    <li class="submenu" >
+                                        <div class="card">
+                                            <p id="nickname"></p>
+                                        </div>
+                                    </li>
+                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
+                                    <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
-                            <li><a href=" {% url 'logout' %} ">logout</a></li>
                         </ul>
                     {% else %}
                         <ul class="left-nav">
@@ -89,14 +98,17 @@
         </div>
     </header>
     <section class="page-start">
+        <br>
+        <h2>선호도 측정 페이지</h2>
+        <p>사용자가 도서에 대한 선호도를 입력할 수 있는 페이지입니다.</p>
         <article>
             <div class="book-img-container">
-                <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
+                <span><i class="fas fa-heart wishlist-btn btns fa-4x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                <span><i class="fas fa-thumbs-up like-btn btns fa-6x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
+                <span><i class="fas fa-thumbs-down dislike-btn btns fa-6x" style='position: absolute; top: 300px; left: 80px; z-index: 30'></i></span>
             </div>
             <div>
-                <span class="btn">다음 책으로 이동</span>
+                <span class="btn" style="cursor: pointer; background-color: rgba(256,256,256, 0.5); padding: 10px; border-radius: 5px; border: 0.5px solid black;">다음 책으로 이동</span>
             </div>
         </article>
         <article>

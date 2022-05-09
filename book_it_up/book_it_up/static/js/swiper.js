@@ -17,7 +17,7 @@ $(function(){
         // 자동 스크롤링
         autoplay: {
             // 1000: 1초
-            delay: 100000,
+            delay: 200000,
             disableOnInteraction: false,
         },
         // 페이징

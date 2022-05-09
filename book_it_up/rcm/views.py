@@ -10,14 +10,38 @@ def rcm(request):
     # 1) user_id 겟 하기
     user_id = request.session.get('user_id')
 
-    # 2) 사용자가 좋아요한 책들 다 가져오기
+    # 2) 사용자가 좋아요한 책들 + 위시리스트 책들 다 가져오기
+    category_ratio_dict = dict()
+
     like_books = LikeTab.objects.filter(user_id=user_id).values()
     like_isbn = list()
-
     for book in like_books:
         like_isbn.append(book['book_id'])
 
-    # 3) 해당 책들의 유사한 책들 담아오기
+    wishlist_books = Wishlist.objects.filter(user_id=user_id).values()
+    for book in wishlist_books:
+        like_isbn.append(book['book_id'])
+
+    # 3) 사용자가 좋아요했던/위시리스트에 담은 책들을 기준으로
+    #   1. 평점 높은 기준 & 최근거 위주로 order by
+    temp = list(BookGrade.objects.filter(book_id__in=like_isbn).order_by('-score').values("book_id"))
+    like_isbn = list(isbn['book_id'] for isbn in temp)
+
+    #   2. 좋아요 장르 비율대로 배분하기
+    temp = list(Book.objects.filter(book_id__in=like_isbn))
+    like_isbn = list()
+    for book in temp:
+        category_name = book.category.split('>')[0]
+        if category_name not in category_ratio_dict.keys():
+            category_ratio_dict[category_name]= []
+            category_ratio_dict[category_name].append(1)
+            category_ratio_dict[category_name].append()
+        else:
+            category_ratio_dict[category_name][0] += 1
+
+    print(category_ratio_dict)
+
+    # 4) 해당 책들의 유사한 책들 담아오기
     db = client.book
     collection = db.relative_book
 

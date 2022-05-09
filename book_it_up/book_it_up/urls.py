@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('login/', include('login.urls')),
-    path('/recommendation/', include('rcm.urls')),
+    path('recommendation/', include('rcm.urls')),
     path('book_id/', views.get_info),
     path('mysite/',views.mysite, name='mysite'),
     path('mysite/mysite_likebook',views.mysite_likebook),

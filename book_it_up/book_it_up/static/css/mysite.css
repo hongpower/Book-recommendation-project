@@ -1,0 +1,136 @@
+.top-container *, .bottom-container *{
+    color: black;
+}
+
+section{
+    background-color: rgba(164, 149, 133, 0.5);
+}
+*{
+    text-align: center;
+
+}
+.info, .usage, .like-img-container, .wish-img-container, .board-table{
+    /*border: 2px rgb(164, 149, 133) solid;*/
+    border-radius: 5px;
+}
+
+
+.top-container{
+    display: inline-block;
+    width: 100%;
+    height: 520px;
+    margin: 10px;
+}
+.left-container{
+    display: inline-block;
+    width: 33%;
+    height: 500px;
+    float: left;
+    margin-right: 10px;
+}
+
+.info{
+    background-color: rgba(256,256,256, 0.2);
+    display: inline-block;
+    width: 100%;
+    height: 30%;
+}
+.info label{
+    display: inline-block;
+    width: 130px;
+    left-padding: 60px;
+}
+.info input{
+    background-color: rgba(256,256,256, 0.2);
+    padding-left: 30px;
+    border: None;
+    text-align: left;
+    padding-top: 10px;
+    width: 150px;
+}
+.usage{
+    background-color: rgba(256,256,256, 0.2);
+    display: inline-block;
+    width: 100%;
+    height: 70%;
+    margin-top: 10px;
+}
+.usage label{
+    padding-top: 10px;
+    display: inline-block;
+    width: 280px;
+    left-padding: 60px;
+}
+.usage span{
+    display: inline-block;
+    text-align: left;
+    padding-bottom: 20px;
+    font-size: 15pt;
+}
+
+.usage p{
+    width: 200px;
+}
+.right-container{
+    width: 65%;
+    height: 500px;
+    display: inline-block;
+
+}
+
+.like-img-container{
+    background-color: rgba(256,256,256, 0.2);
+    width: 100%;
+    height: 50%;
+}
+.wish-img-container{
+    background-color: rgba(256,256,256, 0.2);
+    width: 100%;
+    height: 50%;
+    margin-top: 10px;
+}
+.book-img-container{
+    width: 13%;
+    height: 65%;
+}
+.btn{
+    position:relative;
+    left: 45%;
+    top: -7px;
+}
+
+.board-table{
+    width: 98.7%;
+    display: inline-block;
+    background-color: rgba(256,256,256, 0.2);;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    padding: 5%;
+}
+h2{
+    padding-top: 10px;
+    font-size: 19px;
+}
+.board-table h2{
+    width: 90%;
+}
+table {
+    margin-top: 30px;
+    width: 90%;
+    height: 100px;
+    border-top: black solid 1px;
+    border-collapse: collapse;
+}
+table tr{
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+table thead tr{
+    background-color: rgba(256,256,256, 0.4);
+}
+table tr{
+    padding-top: 30px;
+    height: 50px;
+}
+

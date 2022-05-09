@@ -6,9 +6,39 @@
     <title>Unlogged</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="{% static 'js/unlogged.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <style>
+        .regi{
+            text-align: center;
+
+        }
+        a{
+            display: inline-block;
+            font-size: 30pt;
+            padding: 70px;
+        }
+
+        a:hover{
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-    <a href="/login">로그인 페이지로 이동하기</a>
-    <a href="/">홈페이지로 돌아가기</a>
+<div class="background">
+        <div class="background-shadow">
+            <div class="container">
+                <div class="row">
+                    <div class="regi">
+                        <a href="/login">로그인 페이지로 이동하기</a>
+                        <br>
+                        <a href="/">홈페이지로 돌아가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>

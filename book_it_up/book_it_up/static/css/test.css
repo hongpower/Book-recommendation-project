@@ -1,0 +1,9 @@
+.book-img-container{
+    height: 500px;
+    width: 350px;
+}
+
+.like-btn, .dislike-btn{
+    height : 200px;
+    width : 200px;
+}

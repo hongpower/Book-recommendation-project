@@ -19,15 +19,28 @@ client = MongoClient("mongodb://" + mongo_user + ":" + mongo_pw + "@" + ip_addre
 
 
 def index(request):
+    final_lst = list()
+    final_dict = dict()
+
     # 짧은 책 랜덤으로 불러오기, page수 150이하, 무게 150이하, 높이 150이하, 가로길이 150이하로 0/null 아닌 값  :
-    books = BookSize.objects.filter(width__lte=200, height__lte=200, page__lte=200, weight__lte=200)
+    books = BookSize.objects.filter(width__lte=200, height__lte=200, weight__lte=300, weight__gte=200)
+
     book_lst = []
+    for i in range(30):
+        rand_n=random.randint(0, len(books)-1)
+        book_lst.append(books[rand_n].book_id)
+
+    books = BookGrade.objects.filter(book_id__in=book_lst).order_by('-score')
+
+    for i in range(20):
+        rand_n=random.randint(0, len(books)-1)
+        book_lst.append(books[rand_n].book_id)
+
+    books = BookCover.objects.filter(book_id__in=book_lst)
     for i in range(15):
         rand_n=random.randint(0, len(books)-1)
         book_lst.append(books[rand_n].book_id)
-    final_lst = list()
-    final_dict = dict()
-    books = BookCover.objects.filter(book_id__in=book_lst)
+
     for book in books:
         temp = dict()
         temp['book_id'] = book.book_id
@@ -42,7 +55,6 @@ def index(request):
 
     # 낮/밤별로 읽기 좋은 책 추천하기
     # 1) 시간대 가져오기
-    hour_now = datetime.now().hour
 
     db = client.book
     collection = db.keyword
@@ -54,11 +66,15 @@ def index(request):
     # 2) 밤인지 낮인지 확인 후 해당 키워드 3개 이상 가진 책으로 추천
     isbn_lst = list()
     keyword_book_isbn = collection.find()
-
+    
+    hour_now = datetime.now().hour
+    print('현재시간은', hour_now)
     if 4 <= hour_now <= 16:
+        final_dict['is_daytime'] = True
         keyword_list = morning_keywords
 
     else:
+        final_dict['is_daytime'] = False
         keyword_list = night_keywords
 
     # 책 한 권마다 모든 키워드 확인
@@ -325,7 +341,6 @@ def mysite(request):
 
 # test.html 연결해주는 함수 :
 def test(request):
-
     user_id=request.GET['user_id']
     data={'user_id':user_id}
     return render(request, 'book_it_up/test.html',data)
@@ -422,10 +437,9 @@ def auto_complete(request):
         return render(request, 'search/search.html')
 
     return render(request, 'search/search.html')
+
 def profile(request): # 오른쪽 상단 로그인하면 나오는 프로필에 필요한 데이터를 위한 코드
     username=request.GET['user_id']
-
-
     user_info=User.objects.filter(user_id=username).values('user_id','user_email','nickname')[0]
     book_history=BookHistory.objects.filter(user_id=username).values()
     read_book = len(book_history)
@@ -600,6 +614,7 @@ def mysite_wishlistbook(request): # mysite에서 wishlist 표지들 가져오기
 
 def all_like(request):
     user_id = request.session.get('user_id')
+    print('user_id는', user_id)
     data={'user_id':user_id}
     return render(request,'book_it_up/all_like.html',data)
 
