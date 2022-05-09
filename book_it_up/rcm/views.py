@@ -10,7 +10,7 @@ def rcm(request):
     # 1) user_id 겟 하기
     user_id = request.session.get('user_id')
 
-    # 2) 사용자가 좋아요한 책들 + 위시리스트 책들 다 가져오기
+    # 2) 사용자가 좋아요한 책들 + 위시리스트 책들 다 가져오기,
     category_ratio_dict = dict()
 
     like_books = LikeTab.objects.filter(user_id=user_id).values()
@@ -30,16 +30,23 @@ def rcm(request):
     #   2. 좋아요 장르 비율대로 배분하기
     temp = list(Book.objects.filter(book_id__in=like_isbn))
     like_isbn = list()
+    total_books_n = 0
     for book in temp:
         category_name = book.category.split('>')[0]
         if category_name not in category_ratio_dict.keys():
             category_ratio_dict[category_name]= []
             category_ratio_dict[category_name].append(1)
-            category_ratio_dict[category_name].append()
+            total_books_n += 1
+            category_ratio_dict[category_name].append([])
+            category_ratio_dict[category_name][1].append(book.book_id)
         else:
             category_ratio_dict[category_name][0] += 1
+            total_books_n += 1
+            category_ratio_dict[category_name][1].append(book.book_id)
 
     print(category_ratio_dict)
+
+    # 총 비율 계산해서 해당 비율만큼 뽑기
 
     # 4) 해당 책들의 유사한 책들 담아오기
     db = client.book
