@@ -80,3 +80,32 @@ function GetUserId(){
     var user_id = '<%= Session["user_id"] %>'
 }
 
+$(function(){
+
+
+})
+
+$(function(){
+    $.ajax({
+        url:'/bestbook/',
+        success:function(data){
+            bookRank=''
+
+            data=data['books']
+
+            for(var i =0;i<10;i++){ // 상위 몇개 가져올지만 정하면 됨 -> 상위 10개만
+
+                bookRank += '<tr>'
+                bookRank += '<td>'+(i+1)+'</td>'
+                bookRank += '<td>'+data[i].title+'</td>'
+                bookRank += '<td>'+data[i].score_avg+'</td>'
+                bookRank += '<td>'+data[i].history_cnt+'</td>'
+                bookRank += '</tr>'
+
+            }
+
+
+            $(".rank-book").html(bookRank);
+        }
+    })
+})

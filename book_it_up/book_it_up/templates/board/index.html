@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>좋아요 확인 페이지</title>
+    <title>도서 기록 작성하기</title>
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/all_page.css' %}">
     <link rel="stylesheet" href="{% static 'css/star.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/history.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,13 +24,13 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="{% static 'js/rcm.js' %}"></script>
     <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
     <script src="{% static 'js/swiper.js' %}"></script>
     <script src="{% static 'js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/search_auto_complete.js' %}"></script>
     <script src="{% static 'js/history.js' %}"></script>
     <script src="{% static 'js/star.js' %}"></script>
-    <script src="{% static 'js/all_like.js' %}"></script>
-    <script src="{% static 'js/modal.js' %}"></script>
-    <script src="{% static 'js/search_auto_complete.js' %}"></script>
+    <script src="{% static 'js/booknote.js' %}"></script>
     <script>
 
     </script>
@@ -44,19 +44,19 @@
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
+                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
                             <li class="menu">
                                 <div class="parent-menu">
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>좋아요 기반 추천</a></li>
+                                    <li class="submenu"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
                                     <li class="submenu"><a href="#">메뉴 2</a></li>
                                     <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Community</a></li>
-                            <li><a href="/about_us">AboutUs</a></li>
+                            <li><a href="#">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li style="width: 170px;">
@@ -85,7 +85,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        {% else %}
+                    {% else %}
                         <ul class="left-nav">
                             <li><a href="/unlogged">Logo</a></li>
                             <li><a href="/unlogged">Home</a></li>
@@ -103,15 +103,80 @@
             </div>
         </div>
     </header>
-    <section class="page-start">
-        <article class="like-img-article">
 
-        </article>
+    <section class="page-start">
         <article>
-            <div class="btns">
-                <span class="btn" id="mysite-like-btn" ><a href="/mysite">접기</a></span>
-            </div>
+            <table border="1">
+                <col width="50">
+                <col width="100">
+                <col width="500">
+                <col width="100">
+                <tr>
+                    <th>번호</th>
+                    <th>작성자</th>
+                    <th>제목</th>
+                    <th>작성일</th>
+                </tr>
+        <!--views로 보냇는데 list값이 없다면-->
+                {% if not list %}
+                    <tr>
+                        <th colspan="4">--------------작성된 글이 없습니다--------------</th>
+                    </tr>
+                <!--views로 보냇는데 list값이 하나이상-->
+                {% else %}
+                    {% for data in list %}
+                        <tr>
+                            <td>{% if forloop.counter == 10 %}
+                                {{cnt}}{{forloop.counter|cut:"1"}}
+                                {% else %}
+                                {{cnt|add:-1}}{{forloop.counter}}
+                                {% endif %}
+                            </td>
+
+                            <td>{{ data.user_id }}</td>
+                            <td><a href="{% url 'detail' data.board_id %}">{{ data.title }}</a></td><!--detail에 data.id를 요청해서 받으려고 함-->
+                            <td>{{data.pubdate|date:"Y-m-d"}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                <tr>
+                    <td colspan="4" align="right">
+                        <input type="button" value="글작성" onclick="location.href='insertform/'"> <!--버튼을 누르면 /insertform으로 요청-->
+                    </td>
+                </tr>
+            </table>
+
+            <!--추가-->
+            <!--처음으로-->
+            <a href="?page=1">처음</a> <!--a태그에 경로를 ?page1으로 지정해서 첫 페이지로 이동-->
+            <!--이전 페이지-->
+            {% if list.has_previous %} <!--만약 리스트에서 이전값이 존재한다면-->
+                <a href="?page{{ list.previous_page_number }}">이전</a> <!--a태그에 경로를 ?page+변수로 지정하고 변수에는 이전페이지의 값을 넣는다 -->
+            {% else %}
+                <a>이전</a>
+            {% endif %}
+
+            <!--페이징-->
+            {% for page_num in list.paginator.page_range %} <!--첫 페이지 부터 페이지 범위만큼 반복문 실행-->
+                {% if page_num == list.number %} <!--만약 현재 페이지 넘버가 list의 넘버와 같다면-->
+                    <b>{{ page_num }}</b>  <!--현재 페이지를 b태그로 표시 -->
+                {% else %}
+                    <a href="?page={{page_num}}">{{ page_num }}</a> <!--현재 페이지 넘버와 list 넘버가 다르다면
+                    a태그 경로에 ?page=페이지넘버로 하여 표시-->
+                {% endif %}
+            {% endfor %}
+
+            <!--다음 페이지-->
+            {% if list.has_next %}  <!--다음 페이지 값을 가지고 있다면 -->
+                <a href="?page={{ list.next_page_number }}">다음</a> <!--a태그의 ?page=다음페이지 넘버 값을 넣어 경로를 지정  -->
+            {% else %}
+                <a>다음</a>
+            {% endif %}
+            <!--끝으로-->
+            <a href="?page={{ list.paginator.num_pages }}">끝</a> <!---->
+            <br>
         </article>
+
         <article>
             <div id='modal'>
                 <div class="close">닫기</div>
@@ -126,6 +191,8 @@
                 </div>
             </div>
         </article>
+
+
     </section>
 
 

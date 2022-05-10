@@ -140,9 +140,10 @@
                             <span class="search-result-author">{{ result.object.author }}</span><br>
                             <span class="search-result-isbn13">isbn:{{ result.object.book_id }}</span><br>
                             <span class="search-result-publisher">{{ result.object.publisher }}</span><br>
-                             <span class="search-result-price">₩{{ result.object.price }}</span><br>
+                            <span class="search-result-price">₩{{ result.object.price }}</span><br>
                             <span class="search-result-category">{{ result.object.category }}</span><br>
                             <span class="search-result-pubdate">출간일:{{ result.object.pubdate }}</span><br>
+                            <span class="search-result-btn"><button onclick="location.href='/board/booknote_search/{{result.object.book_id}}'">독서노트 작성</button></span><br>
                         </div>
                     </div>
                     {% empty %}
