@@ -42,6 +42,9 @@ function getAnotherBook(bookId,btnType){
             bookImageStr += "<img class='book-img'  src=" + coverLarge + " name=" + bookId+ ">"
             $(".book-img").remove()
             $('.book-img-container').prepend(bookImageStr);
+            $('.wishlist-btn').removeClass('in_wishlist')
+            $('.like-btn').removeClass('in_likes')
+            $('.dislike-btn').removeClass('in_dislikes')
         }
     })
 }

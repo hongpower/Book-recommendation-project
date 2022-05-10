@@ -46,6 +46,13 @@
     font-weight: bold;
     font-style: normal;
 }
+@font-face{
+    font-family: ‘bold-korean’;
+    src: url(‘https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff’) format(‘woff’);
+    font-weight: normal;
+    font-style: normal;
+}
+
 *{
     padding: 0px;  
     margin: 0px;
@@ -208,7 +215,6 @@ nav > ul > li > a{
     top: -5px;
 }
 .hide-menu {
-    margin:
 }
 .submenu {
     width: 100%;

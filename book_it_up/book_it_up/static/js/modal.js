@@ -48,7 +48,6 @@ $(function(){
         // 책 이미지 클릭하면 모달창 열기 :
         $("body").on("click", ".book-img-container", function(event){
             // 좋아요/싫어요/찜하기 버튼이 아니라면 :
-            console.log($(event.target).closest(".btns").length)
             if (!$(event.target).closest(".btns").length){
                 console.log($(event.target).closest(".btns").length)
                 // 책 isbn와 imgUrl 가져오기
@@ -64,8 +63,7 @@ $(function(){
                     dataType: 'json',
                     success: function(data){
                         // 만약 no_info라면 :
-                        console.log(data.all)
-                        console.log(data.all.length)
+                    
                         if (data.all.length <= 1){
                             alert("해당 책의 세부 정보가 없습니다.")
                         } else {
@@ -78,6 +76,7 @@ $(function(){
                             for (key in topBoxInfo){
                                 data = topBoxInfo
                                 if (data[key] != null & data[key] != ""){
+
                                     if (key=="title"){
                                         //title에 부가 제목 있으면 <br>넣기
                                         titleAry = data[key].split("-")
@@ -92,7 +91,9 @@ $(function(){
                                         continue
                                     }
                                     if (key=="book_id"){
+                                        var bookId = data[key]
                                         data[key] = '(isbn13: '+ data[key] + ')'
+
                                     }
                                     if (key=="cover"){
                                         $("#left-box").html("<img src=" + data[key] + ">")
@@ -144,6 +145,8 @@ $(function(){
 
                                         var info = "<li id=" + key + " class='info' >" + data[key] + "</li>"
                                         $(".info-list").append(info)
+
+
                                     }
                                     //var info = "<li id=" + key + " class='info' >" + data[key] + "</li>"
                                     //$(".info-list").append(info)
@@ -151,50 +154,92 @@ $(function(){
 
 
 
-                            for (key in bottomBoxInfo){
-                                if (key=="desc"){
-                                    $("#bottom-small-box").html("<div class='desc'></div>")
-                                    $(".desc").append('<div class="bottom-box-title">줄거리:</div>')
-                                    $(".desc").append("<p>" + bottomBoxInfo[key]+"</p>")
+                                for (key in bottomBoxInfo){
+                                    if (key=="desc"){
+                                        $("#bottom-small-box").html("<div class='desc'></div>")
+                                        $(".desc").append('<div class="bottom-box-title"><h2>책 소개</h2></div>')
+                                        $(".desc").append("<p>" + bottomBoxInfo[key]+"</p>")
 
-                                }
+                                    } else if (key=="review"){
+                                        $("#bottom-small-box").append("<div class='reviews'></div>")
+                                        $('.reviews').append("<ul id='reviewAry'></ul>")
+                                        $('#reviewAry').append("<li class='bottom-box-title'><h2>리뷰</h2></li>")
 
-                                else if (key=="review"){
-                                    $("#bottom-small-box").append("<div class='reviews'></div>")
-                                    $('.reviews').append("<ul id='reviewAry'></ul>")
-                                    $('#reviewAry').append("<li class='bottom-box-title'>리뷰:</li>")
-                                    console.log(bottomBoxInfo[key])
-                                    $.each(bottomBoxInfo[key][0], function(index, value){
-                                        $("#reviewAry").append("<li>"+value+"</li>")
-                                    })
-                                }
+                                        var reviewLen = bottomBoxInfo[key][0].length
 
+                                        $.each(bottomBoxInfo[key][0], function(index, value){
+                                            if (value.length > 6){
+                                                $("#reviewAry").append("<li class='review-box'>"+'"'+value+'"'+"</li>")
+                                            } else {
+                                                reviewLen -=1
+                                            }
+                                        })
 
-                                 else if (key=="phrase"){
-                                    $("#bottom-small-box").append("<div class='phrase'></div>")
-                                    $('.phrase').append("<ul id='phraseAry'></ul>")
-                                    $('#phraseAry').append("<li class='bottom-box-title'>대사:</li>")
-                                    console.log(bottomBoxInfo[key])
-                                    $.each(bottomBoxInfo[key][0], function(index, value){
-                                        $("#phraseAry").append("<li>"+value+"</li>")
-                                    })
+                                        // 만약에 개수가 홀수라면 빈 박스 추가
+                                        if (reviewLen % 2 == 1){
+                                            $("#reviewAry").append("<li class='review-box empty-review-box'></li>")
+                                        }
+
+                                    } else if (key=="phrase"){
+
+                                        $("#bottom-small-box").append("<div class='phrase'></div>")
+                                        $('.phrase').append("<ul id='phraseAry'></ul>")
+                                        $('#phraseAry').append("<li class='bottom-box-title'><h2>책 속 한마디</h2></li>")
+                                        
+                                        $.each(bottomBoxInfo[key][0], function(index, value){
+                                            $("#phraseAry").append("<li>"+value+"</li>")
+                                        })
+                                    }
+
                                 }
 
                             }
-                                    // 2) 모달 창 보여주기
+                            // 2) 모달 창 보여주기
                             $("#modal").show();
+
                             // 3) 모달창을 제외한 body를 비활성화 시키는 backon 클래스 추가
                             $("body").append("<div class='backon'></div>")
 
-                             $("body").on("click", function(event){
+                            $("body").on("click", function(event){
                                 if(event.target.className == "close" || event.target.className == "backon"){
                                     $("#modal").hide();
                                     $(".backon").hide();
                                 }
                             })
+                     
+                            // 여기 추가:
+                            
+                            var descTarget = $(".desc").position().top -20
+                            var reviewTarget = $(".reviews").position().top -20
+                            var quoteTarget = $(".phrase").position().top -20
 
+                            $("body").on("click", "#modal-info-page", function(){
+                                $('.modal-content').animate({ scrollTop: 0}, "slow")
+                                console.log('맨 위로')
+                                console.log(infoTarget)
+
+                            })
+                            $("body").on("click", "#modal-desc-page", function(){
+                                $('.modal-content').animate({ scrollTop: descTarget}, "slow")
+                                console.log('desc')
+                                console.log($(".desc").offset().top)
+
+                            })
+                            $("body").on("click", "#modal-review-page", function(){
+                                $('.modal-content').animate({ scrollTop: reviewTarget}, "slow")
+                                console.log('리뷰')
+                                console.log($(".reviews").offset().top)
+
+                            })
+                            
+
+                            $("body").on("click", "#modal-quote-page", function(){
+                                $('.modal-content').animate({scrollTop: quoteTarget}, "slow")
+                                console.log('책 한마디')
+                                console.log($(".phrase").offset().top)
+
+                            })
                         }
-                    }
                     }
 
                 })
@@ -202,7 +247,8 @@ $(function(){
             }
 
         })
-})
+
+    })
 
 
 

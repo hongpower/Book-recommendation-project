@@ -18,7 +18,8 @@ $(function(){
         autoplay: {
             // 1000: 1초
             delay: 200000,
-            disableOnInteraction: false,
+            // 여기 수정:
+            disableOnInteraction: true,
         },
         // 페이징
         pagination: {
@@ -29,6 +30,10 @@ $(function(){
             // 타입: fraction, bullets, progressbar
             type: 'fraction',
         },
+        // observer와 observeParents주기
+        observer:true,
+        observerParents:true,
+
         // 네비게이션
         navigation: {
             // 다음 버튼 클래스명

@@ -35,10 +35,7 @@ def index(request):
 #회원가입
 def signup(request): # 회원가입 코드
 
-    if request.method=="GET":
-        return render(request,'login/signup.html')
-
-    elif request.method =="POST":
+    if (request.method =="POST") & (request.POST.get('email') != None):
 
         username=request.POST.get('username')
         password = request.POST.get('password')
@@ -85,12 +82,13 @@ def signup(request): # 회원가입 코드
             user.save()
             return redirect("/login/success")
 
+    # request가 get이라면:
+    else:
+        return render(request,'login/signup.html')
 
 def success(request):
 
             return redirect("/login/success")
-
-
 
 def success(request): # 회원가입에 성공했을 때
 

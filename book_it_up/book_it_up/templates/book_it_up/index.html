@@ -17,6 +17,7 @@
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
+        var firstUser = "{{ user }}"
         //var likeBtnSrc = "{% static 'images/heart.png' %}"
     </script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -43,19 +44,19 @@
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/test?user_id={{user_id}}">Preference</a></li>
+                            <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
                                 <div class="parent-menu">
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="/recommendation"}>메뉴 1</a></li>
-                                    <li class="submenu"><a href="#">메뉴 2</a></li>
+                                    <li class="submenu"><a href="/recommendation">by preference</a></li>
+                                    <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
                                     <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Community</a></li>
-                            <li><a href="#">AboutUs</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li style="width: 170px;">
@@ -111,53 +112,22 @@
     </header>
 
     <section class="page-start">
-        <article id="youtube">
+        <article id="love-books">
             <h2>#연애세포 뿜뿜일 때, #설레고 싶은 날엔</h2>
             <div class="swiper-container">
-                <div  class="swiper-wrapper">
-                    <div class="swiper-slide">
-                            {% with books=love_books|slice:"0:5" %}
-                                {% for book in  books %}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=love_books|slice:"5:10" %}
-                                {% for book in  books%}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=love_books|slice:"10:15" %}
-                                {% for book in  books%}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
+                <div class="swiper-wrapper">
+                    {% for book_set in love_books %}
+                        <div class="swiper-slide">
+                            {% for book in book_set %}
+                                <div class="book-img-container">
+                                    <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
@@ -166,55 +136,23 @@
         <article id="light-books" class="container" >
             <h2> #이동할 때, #시간 없을 때, #가볍게 읽기 좋은</h2>
             <div class="swiper-container">
-                <div  class="swiper-wrapper">
-                    <div class="swiper-slide">
-                            {% with books=short_books|slice:"0:5" %}
-                                {% for book in  books %}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-                                    
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=short_books|slice:"5:10" %}
-                                {% for book in  books%}
-                                    
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-
-                                    </div>
-                                    
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=short_books|slice:"10:15" %}
-                                {% for book in  books%}
-                                    
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-                                    
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
+                <div class="swiper-wrapper">
+                    {% for book_set in short_books %}
+                        <div class="swiper-slide">
+                            {% for book in book_set %}
+                                <div class="book-img-container">
+                                    <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
             </div>
-
         </article>
         <article id="timely-books" class="container">
             {% if is_daytime %}
@@ -222,51 +160,20 @@
             {% else %}
                 <h2> #감수성 풍부할 때, #잠안올 때, #인생에 지칠 때</h2>
             {% endif %}
-            <div class="swiper-container">
-                <div  class="swiper-wrapper">
-                    <div class="swiper-slide">
-                            {% with books=hourly_books|slice:"0:5" %}
-                                {% for book in  books %}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=hourly_books|slice:"5:10" %}
-                                {% for book in  books%}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=hourly_books|slice:"10:15" %}
-                                {% for book in  books%}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
+           <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for book_set in hourly_books %}
+                        <div class="swiper-slide">
+                            {% for book in book_set %}
+                                <div class="book-img-container">
+                                    <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->

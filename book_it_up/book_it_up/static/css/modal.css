@@ -4,6 +4,18 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face{
+    font-family: "boldfont";
+    src: url("../images/theboldfont.ttf")
+}
+
+@font-face{
+    font-family: "bold-korean";
+    src: url("https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
 #modal{
     display: none;
     width: 70%;
@@ -50,6 +62,16 @@
     overflow-x: hidden;
 
 }
+
+.modal-content h2{
+    display: inline-block;
+    margin: 25px;
+    margin-bottom: 30px;
+    font-size: 18pt;
+    /*형광펜 효과 */
+    background: linear-gradient(to top, #FFE400 50%, transparent 50%);
+
+}
 .swiper-wrapper{
     width: 100%;
     padding-left: 1%
@@ -62,7 +84,7 @@
 }
 
 #top-box{
-    padding-top: 3%;
+    padding-top: 5%;
     height: auto;
     width: 100%;
     display: inline-block;
@@ -139,8 +161,7 @@
 
 
 #title{
-    font-size: 40pt;
-    font-style: bold;
+    font-size: 35pt;
     color: rgb(126, 105, 85);
 }
 #author{
@@ -195,6 +216,76 @@
 #review{}
 
 #phrases{}
+
+
+/**/
+#modal-nav{
+    background: #fcf9f5;
+    height:40px;
+    width: 70%;
+    position: fixed;
+}
+
+#modal-nav *{
+    margin: auto;
+    height: 20px;
+    padding: 10px 30px;
+    width: 30%;
+    background: transparent;
+    position: relative;
+    top: 11px;
+    cursor: pointer;
+}
+
+#modal-nav *:hover{
+    transform: scale(1.3);
+    border-bottom: 1px solid black;
+}
+
+.reviews{
+    height: 100%;
+}
+
+#reviewAry{
+    width: 100%;
+    height: 100%;
+}
+
+.review-box{
+    background-color: rgba(256,256,256, 0.5);
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid rgb(126 105 85);
+    border-radius: 20px;
+    display: inline-block;
+    width: 31%;
+    height: 70px;
+    font-size: 10pt;
+    list-style: none;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    box-shadow:4px 2px 4px rgb(126, 105, 85);
+}
+.review-box::-webkit-scrollbar{
+    display: none;
+}
+
+.review-box:nth-child(odd){
+    margin-left: 10px;
+    vertical-align: center;
+}
+
+.review-box:nth-child(even){
+    margin-right: 10px;
+}
+
+.empty-review-box{
+    background: transparent;
+    border: none;
+    box-shadow:none;
+}
+
 
 
 

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사용자 취향 기반 추천 페이지</title>
+    <link rel="stylesheet" href="{% static 'css/rcm.css' %}">
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
@@ -30,19 +31,18 @@
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
+                            <li><a href="/preference?user_id={{user_id}}">Test</a></li>
                             <li class="menu">
                                 <div class="parent-menu">
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="submenu"><a href="#">메뉴 2</a></li>
-                                    <li class="submenu"><a href="#">메뉴 3</a></li>
+                                    <li class="submenu"><a href="{% url 'rcm' %}"}>by preference</a></li>
+                                    <li class="submenu"><a href="{% url 'keyword' %}">by keywords</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Community</a></li>
-                            <li><a href="#">AboutUs</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li style="width: 170px;">
@@ -92,78 +92,61 @@
     <section class="page-start">
         <br>
         <h2>선호도 기반 추천</h2>
-        <p>특정 도서들에 대해 선택했던 선호도를 통해, 좋아할 만한 책을 추천해주는 페이지입니다.</p>
         <article id="rcm-books" class="container" >
+            <h3> {{ user_id }}님이 좋아할 것 같은 책들이에요! </h3>
+            <p>특정 도서들에 대해 선택했던 선호도를 통해, 좋아할 만한 책을 추천해줍니다.</p>
             <div class="swiper-container">
                 <div  class="swiper-wrapper">
-                    <div class="swiper-slide">
-                            {% with books=rcm_books|slice:"0:5" %}
-                                {% for book in  books%}
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=rcm_books|slice:"5:10" %}
-                                {% for book in  books%}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=rcm_books|slice:"10:15" %}
-                                {% for book in  books%}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
-                    <div class="swiper-slide">
-                            {% with books=rcm_books|slice:"15:20" %}
-                                {% for book in  books%}
-
-                                    <div class="book-img-container">
-                                        <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
-                                        <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
-                                        <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
-                                    </div>
-                                {% endfor %}
-                            {% endwith%}
-                    </div>
+                    {% for book_set in rcm_books %}
+                        <div class="swiper-slide">
+                            {% for book in book_set %}
+                                <div class="book-img-container">
+                                    <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
             </div>
         </article>
 
-
-
-
-
-
+        <article>
+            <h3>{{user_id}}님을 위한 도서 챌린지! 이런 책은 어때요? </h3>
+            <p> 사용자가 선호하는 도서들의 동일한 장르 중 "유사도가 낮은 책"을 추천해줍니다.</p>
+            <div class="swiper-container">
+                <div  class="swiper-wrapper">
+                    {% for book_set in different_books %}
+                        <div class="swiper-slide">
+                            {% for book in book_set %}
+                                <div class="book-img-container">
+                                    <img src={{ book.img_url }} name={{ book.book_id }} class="book-img">
+                                    <span><i class="fas fa-heart wishlist-btn btns fa-2x" style='position: absolute; top: 85%; left: 80%; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-up like-btn btns fa-3x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
+                                    <span><i class="fas fa-thumbs-down dislike-btn btns fa-3x" style='position: absolute; top: 160px; left: 80px; z-index: 30'></i></span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+                <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+            </div>
+        </article>
         <article>
             <div id='modal'>
                 <div class="close">닫기</div>
                 <div class="modal-content">
+                    <div id="modal-nav">
+                        <span id="modal-info-page">기본 정보</span>
+                        <span id="modal-desc-page">책 소개</span>
+                        <span id="modal-review-page">리뷰</span>
+                        <span id="modal-quote-page">책 속 한마디</span>
+                    </div>
                     <div id="top-box">
                         <div id="left-box"></div>
                         <div id="right-box"></div>

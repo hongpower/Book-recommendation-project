@@ -19,6 +19,19 @@ client = MongoClient("mongodb://" + mongo_user + ":" + mongo_pw + "@" + ip_addre
 
 
 def index(request):
+
+    user_id = request.session.get('user_id')
+
+
+    # 1) 처음 가입하거나 아직 10개 이상의 좋아요를 하지 않은 유저라면 test 페이지로 보내기:
+    user_history_logs = len(LikeTab.objects.filter(user_id=user_id))
+    # if (user_id !=None) & (user_history_logs <= 10):
+    #     return render(request, 'book_it_up/index.html', {'user' : 'first_user'})
+
+    no_of_love_books = 20
+    no_of_timely_books = 20
+    no_of_short_books = 20
+
     final_lst = list()
     final_dict = dict()
 
@@ -26,29 +39,32 @@ def index(request):
     books = BookSize.objects.filter(width__lte=200, height__lte=200, weight__lte=300, weight__gte=200)
 
     book_lst = []
-    for i in range(30):
+    for i in range(len(books)):
         rand_n=random.randint(0, len(books)-1)
         book_lst.append(books[rand_n].book_id)
 
     books = BookGrade.objects.filter(book_id__in=book_lst).order_by('-score')
 
-    for i in range(20):
+    for i in range(len(book_lst)):
         rand_n=random.randint(0, len(books)-1)
         book_lst.append(books[rand_n].book_id)
 
     books = BookCover.objects.filter(book_id__in=book_lst)
-    for i in range(15):
-        rand_n=random.randint(0, len(books)-1)
-        book_lst.append(books[rand_n].book_id)
 
-    for book in books:
-        temp = dict()
-        temp['book_id'] = book.book_id
-        temp['img_url'] = book.cover_large
-        final_lst.append(temp)
+    rand_n = random.sample(range(len(books)), no_of_short_books)
+
+    for i in range(0, no_of_short_books, 5):
+        five_books_lst = list()
+        for j in rand_n[i:i+5]:
+            book = books[j]
+            temp = dict()
+            temp['book_id'] = book.book_id
+            temp['img_url'] = book.cover_large
+            five_books_lst.append(temp)
+
+        final_lst.append(five_books_lst)
+
     final_dict['short_books'] = final_lst
-
-    user_id = request.session.get('user_id')
 
     if user_id:
         final_dict['user_id']=user_id
@@ -100,15 +116,18 @@ def index(request):
     hourly_book_list = list()
 
     # 중복없는 숫자로 :
-    rand_n = random.sample(range(len(hourly_books)), 15)
+    rand_n = random.sample(range(len(hourly_books)), no_of_timely_books)
 
-    for i in rand_n:
-        book = hourly_books[i]
-        temp = dict()
-        temp['book_id'] = book.book_id
-        temp['img_url'] = book.cover_large
-        hourly_book_list.append(temp)
+    for i in range(0,no_of_timely_books, 5):
+        five_books_lst = list()
+        for j in rand_n[i:i + 5]:
+            book = hourly_books[j]
+            temp = dict()
+            temp['book_id'] = book.book_id
+            temp['img_url'] = book.cover_large
+            five_books_lst.append(temp)
 
+        hourly_book_list.append(five_books_lst)
     final_dict['hourly_books'] = hourly_book_list
 
 
@@ -153,14 +172,18 @@ def index(request):
     love_book_list = list()
 
     # 중복없는 숫자로 :
-    rand_n = random.sample(range(len(love_books)), 15)
 
-    for i in rand_n:
-        book = love_books[i]
-        temp = dict()
-        temp['book_id'] = book.book_id
-        temp['img_url'] = book.cover_large
-        love_book_list.append(temp)
+    rand_n = random.sample(range(len(love_books)), no_of_love_books)
+
+    for i in range(0, no_of_love_books, 5):
+        five_books_lst = list()
+        for j in rand_n[i:i+5]:
+            book = love_books[j]
+            temp = dict()
+            temp['book_id'] = book.book_id
+            temp['img_url'] = book.cover_large
+            five_books_lst.append(temp)
+        love_book_list.append(five_books_lst)
 
     final_dict['love_books'] = love_book_list
 
@@ -333,51 +356,51 @@ def modify_wishlist(request):
 
     return HttpResponse('success')
 
+# about_us 페이지
+def get_about_us(request):
+    return render('/about_us', 'about_us.html')
+
+
 # 내정보 확인하는 페이지 연결해주는 함수 :
 def mysite(request):
     user_id = request.session.get('user_id')
     data={'user_id':user_id}
     return render(request,'book_it_up/mysite.html',data)
 
-# test.html 연결해주는 함수 :
-def test(request):
+def book_photo(request):
+    list1 = []
+    for i in range(1, 11):
+        num = random.randint(0, 233862)
+        list1.append(num)
+
+    dic_data = []
+    book_info = Book.objects.values('book_id', 'cover')
+    for j in list1:
+        data = book_info[j]
+        dic_data.append(data)
+    json_data = {'books': dic_data}
+
+    return JsonResponse(json_data)
+
+# preference.html 연결해주는 함수 :
+def get_preference(request):
     user_id=request.GET['user_id']
     data={'user_id':user_id}
     return render(request, 'book_it_up/test.html',data)
 
-
 # Test 페이지용 책 가져오는 함수 :
 def get_book(request):
+    user_id = request.session.get('user_id')
+    print(user_id)
 
-    # 사용자가 test페이지에 처음 들어간지 파악하기 위해 first 데이터 활용
-    first = request.GET.get('first')
+    # 사용자가 기존에 평가 내렸던 책은 제외하기
 
-    # 처음 test 페이지에 들어간게 아니라면(사용자가 좋아요/싫어요 누른 책 db에 담기) :
-    """
-    if first == None:
-        user_id = request.GET['user_id']
-        book_id = request.GET['book_id']
-        btn_type= request.GET['btn_type']
-
-        # 좋아요 버튼을 눌렀다면 :
-        if btn_type=='like-btn':
-
-            like = LikeTab.objects.create(
-                like_id='L' + user_id + book_id + '2',
-                user_id=user_id,
-                book_id=book_id
-            )
-            like.save()
-        # 싫어요 버튼을 눌렀다면 :
-        else:
-            dislike = DislikeTab.objects.create(
-                dislike_id='D' + user_id + book_id + 'c',
-                user_id=user_id,
-                book_id=book_id
-            )
-            dislike.save()
-    """
-    book_info = BookCover.objects.values('book_id', 'cover_large')
+    like_books = list(LikeTab.objects.values().filter(user_id=user_id).values('book_id'))
+    dislike_books = list(DislikeTab.objects.values().filter(user_id=user_id).values('book_id'))
+    wishlist_books = list(Wishlist.objects.values().filter(user_id=user_id).values('book_id'))
+    eval_done_book_list = like_books + dislike_books + wishlist_books
+    eval_done_book_isbn_lst = [x['book_id'] for x in eval_done_book_list]
+    book_info = BookCover.objects.values('book_id', 'cover_large').exclude(book_id__in=eval_done_book_isbn_lst)
 
     # 랜덤으로 책 뽑기 :
     num = random.randint(0, len(book_info))
@@ -403,7 +426,7 @@ def search(request):
         return JsonResponse(context, safe=False)
 
     request.GET.get('')
-    print('여기냐????1')
+
     user_id = request.session.get('user_id')
     if user_id:
         final_dict = {}

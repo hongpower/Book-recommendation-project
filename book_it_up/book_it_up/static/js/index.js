@@ -1,4 +1,5 @@
 $(function(){
+
     var $nav = $("nav")
     var $page = $('.page-start')
     var $window = $(window)
@@ -73,12 +74,9 @@ $(function(){
     var user_id = "{{ request.session.user_id }}"
     
     GetUserId()
+
 })
 function GetUserId(){
     var user_id = '<%= Session["user_id"] %>'
 }
 
-$(function(){
-
-
-})

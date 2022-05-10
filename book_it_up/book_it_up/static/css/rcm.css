@@ -1,0 +1,14 @@
+h2{
+    display: inline-block;
+    border-bottom: 2px solid rgb(126, 105, 85);
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+h3{
+    display: inline-block;
+    background: linear-gradient(to top, #FFE400 50%, transparent 50%);
+    margin-bottom: 20px;
+}
+p{
+    font-size: 9pt;
+}
