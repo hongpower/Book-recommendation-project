@@ -9,7 +9,7 @@ from .secrets import mongo_user, mongo_pw, ip_address, port_num
 from datetime import datetime
 from django.utils import timezone
 from datetime import datetime
-
+from django.db.models import Avg
 from haystack.views import SearchView
 
 from haystack.generic_views import SearchView
@@ -333,11 +333,7 @@ def modify_wishlist(request):
 
     return HttpResponse('success')
 
-# 내정보 확인하는 페이지 연결해주는 함수 :
-def mysite(request):
-    user_id = request.session.get('user_id')
-    data={'user_id':user_id}
-    return render(request,'book_it_up/mysite.html',data)
+
 
 # test.html 연결해주는 함수 :
 def test(request):
@@ -403,7 +399,7 @@ def search(request):
         return JsonResponse(context, safe=False)
 
     request.GET.get('')
-    print('여기냐????1')
+
     user_id = request.session.get('user_id')
     if user_id:
         final_dict = {}
@@ -579,97 +575,34 @@ def history_delete(request):
     return redirect('history_register')
 
 
+def bestbook(request):
 
-def mysite_likebook(request):  #mysite에서 likebook 표지들 가져오기
-    user_id = request.GET.get('user_id')
+    book_avg = BookHistory.objects.values('book_id').filter(score__gte=4).annotate(score_avg=Avg('score'))
 
-    likebook = LikeTab.objects.filter(user_id=user_id).values() # user_id와 같은 user에 해당하는 데이터들을 가져와 변수에 저장
+    book_lst=[]
 
-    like_lst = []
-    for i in likebook:
-        num = i['book_id']
-        cover = BookCover.objects.filter(book_id=num).values('cover_large','book_id')[0]
-        like_lst.append(cover)
-
-    json_dict = {'books': like_lst}
-
-    return JsonResponse(json_dict)
+    for i in book_avg:
+        title = Book.objects.filter(book_id=i['book_id']).values('title')[0]['title']
+        history = BookHistory.objects.filter(book_id=i['book_id'])
+        like = LikeTab.objects.filter(book_id=i['book_id'])
+        cover_large = BookCover.objects.filter(book_id=i['book_id'])
 
 
-def mysite_wishlistbook(request): # mysite에서 wishlist 표지들 가져오기
-    user_id = request.GET.get('user_id')
+        if cover_large.exists():
+            cover = cover_large.values('cover_large')[0]
+            cover['cover'] = cover.pop('cover_large')
+        else:
+            cover = Book.objects.filter(book_id=i['book_id']).values('cover')[0]
+        i['history_cnt'] = len(history)
+        i['title'] = title
+        i['like_cnt']=len(like)
+        i['cover'] = cover.get('cover')
 
-    wishlistbook = Wishlist.objects.filter(user_id=user_id).values() # user_id와 같은 user에 해당하는 데이터들을 가져와 변수에 저장
+        book_lst.append(i)
+    sorted_dict = sorted(book_lst, key=lambda x: (-x['score_avg'], -x['history_cnt'], -x['like_cnt']))
 
-    wishlist_lst = []
-    for i in wishlistbook:
-        num = i['book_id']
-        cover = BookCover.objects.filter(book_id=num).values('cover_large','book_id')[0]
-        wishlist_lst.append(cover)
-
-    json_dict = {'books': wishlist_lst}
-
-    return JsonResponse(json_dict)
-
-
-def all_like(request):
-    user_id = request.session.get('user_id')
-    print('user_id는', user_id)
-    data={'user_id':user_id}
-    return render(request,'book_it_up/all_like.html',data)
-
-def all_wish(request):
-    user_id = request.session.get('user_id')
-    data={'user_id':user_id}
-    return render(request,'book_it_up/all_wishlist.html',data)
-
-def user_info(request):
-    user_id = request.GET.get('user_id')
-    print(user_id)
-
-    mysite_user = User.objects.filter(user_id=user_id).values()[0]
-    return JsonResponse(mysite_user)
-
-def mysite_update(request):
-    user_id = request.GET.get('user_id')
-    user_email = request.GET.get('email')
-    gender = request.GET.get('gender')
-    birth = request.GET.get('birth')
+    data ={'books':sorted_dict}
+    #print(data)
 
 
-    user_update = User.objects.get(user_id=user_id)  # 유저 모델에서 user_id 일치하는 애 가져온다
-
-    # 새로 입력한 값으로 업데이트
-    user_update.user_email = user_email
-    user_update.gender= gender
-    user_update.birth = birth
-
-    user_update.save()  # 해당 내용을 db에 저장
-
-    data = {'result': '성공'}
-    return JsonResponse(data)  # ajax 응답하려고 넣음
-
-
-def usage(request):
-    user_id = request.GET.get('user_id')
-    like= LikeTab.objects.filter(user_id=user_id)
-    dislike=DislikeTab.objects.filter(user_id=user_id)
-    wish=Wishlist.objects.filter(user_id=user_id)
-    history=BookHistory.objects.filter(user_id=user_id)
-
-    data = {'like':len(like),'dislike':len(dislike),'total':len(like)+len(dislike),'wishlist':len(wish),'history':len(history)}
-
-    return JsonResponse(data)
-
-
-def mysite_board(request):
-    user_id = request.GET.get('user_id')
-    board = Board.objects.filter(user_id=user_id).values()
-
-    board_lst =[]
-    for i in board:
-        board_lst.append(i)
-
-    data = {'board':board_lst}
-    print(data)
     return JsonResponse(data)

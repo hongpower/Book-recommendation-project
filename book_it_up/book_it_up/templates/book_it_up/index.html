@@ -27,7 +27,7 @@
     <script src="{% static 'js/search_auto_complete.js'%}"></script>
 
     <script src="https://kit.fontawesome.com/e0d225eaba.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/profile.js' %}"></script>
+
 
 
     <style>
@@ -49,7 +49,7 @@
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="/recommendation"}>메뉴 1</a></li>
+                                    <li class="submenu"><a href="/recommendation">메뉴 1</a></li>
                                     <li class="submenu"><a href="#">메뉴 2</a></li>
                                     <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
@@ -79,6 +79,7 @@
                                     </li>
                                     <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
+                                    <li class="submenu"><a href="/board">독서노트</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
@@ -272,9 +273,23 @@
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
             </div>
         </article>
-         <article id="rank">
-            <div></div>
-            평점 순위
+         <article id="rank">평점순위
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>제목</th>
+                        <th>평균 별점</th>
+                        <th>읽은 책 등록 수</th>
+                    </tr>
+                </thead>
+                <tbody class="rank-book">
+
+                </tbody>
+
+            </table>
+
         </article>
         <article id="popularity">
             인기도서
