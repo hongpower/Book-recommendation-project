@@ -1,6 +1,14 @@
 /*가로선만 긋고 헤드는 조금더 크고*/
 /*책 제목은 다른 색상으로*/
 /*작성 시간은 조금 더 연한 색으로*/
+article{
+    height: 500px;
+}
+
+h2{
+    padding-top: 30px;
+    margin-bottom: 15px;
+}
 table{
     border-collapse: collapse;
     margin: auto;

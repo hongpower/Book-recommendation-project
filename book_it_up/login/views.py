@@ -57,8 +57,8 @@ def signup(request): # 회원가입 코드
 
             return redirect('signup')
 
-        elif (len(username)<8) | (len(username)>12):
-            messages.add_message(request,messages.ERROR,'아이디는 8글자 이상, 12글자 이하입니다')
+        elif (len(username) < 7) | (len(username)>14):
+            messages.add_message(request,messages.ERROR,'아이디는 8글자 이상, 15글자 이하입니다')
             return redirect('signup')
 
         elif (username.islower() and any(username.isdigit for username in username))==False:
@@ -116,9 +116,10 @@ def id_chk(request): # id 중복과 제한조건 체크
         return JsonResponse(json_data)
         print('user명', user_name)
         print(len(user_name))
-    elif (len(user_name)<8) or (len(user_name)>=12): # id 글자수를 제한하기 위해서 사용
-        json_data['result']='아이디는 8자 이상 12자 이하입니다'
-        return JsonResponse(json_data)
+
+    elif (len(user_name) < 8) | (len(user_name) > 15):
+        messages.add_message(request, messages.ERROR, '아이디는 8글자 이상, 15글자 이하입니다')
+        return redirect('signup')
 
 
     elif (user_name.islower() and any(user_name.isdigit() for user_name in user_name))==False: # 아이디는 영어와 숫자의 조합으로 제한하기 위해 사용
@@ -143,8 +144,8 @@ def nickname_chk(request): # 닉네임 중복,제한 조건 체크
 
         return JsonResponse(json_data)
 
-    elif len(nickname)>6 or len(nickname)<2:
-        json_data['result']='별명은 최대 6자 최소 2자만 가능합니다'
+    elif (len(nickname)>7) or (len(nickname)<1):
+        json_data['result']='별명은 최대 8자 최소 2자만 가능합니다'
         return JsonResponse(json_data)
 
     else:
@@ -158,7 +159,7 @@ def password_chk(request): # 비밀번호 제한 조건 체크
 
     json_data = {}
 
-    if len(password)<6:
+    if len(password) < 5:
         json_data['result'] = '비밀번호는 6자 이상입니다'
         return JsonResponse(json_data)
 

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main page</title>
+    <link rel="icon" href="{% static 'images/bookitup_logo3.png' %}">
+<!--    <link rel="icon" href="/static/www/favicon.ico">-->
     <link rel="stylesheet" href="{% static 'css/index-header.css' %}">
     <link rel="stylesheet" href="{% static 'css/index-section.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
@@ -43,7 +45,7 @@
                 <nav>
                     {% if user_id %}
                         <ul class="left-nav">
-                            <li><a href="#">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/">Home</a></li>
                             <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
@@ -63,6 +65,7 @@
                                 <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
                                     <div class="search-box">
                                         <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+                                        <input type="hidden" class="read-form-control" name="user-id" value="{{user_id}}">
 <!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
                                         <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
                                     </div>
@@ -87,7 +90,7 @@
                         </ul>
                     {% else %}
                         <ul class="left-nav">
-                            <li><a href="/unlogged">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/unlogged">Home</a></li>
                             <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
@@ -183,11 +186,16 @@
                 <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
             </div>
-        </article>
-
+        <article>
             <div id='modal'>
                 <div class="close">닫기</div>
                 <div class="modal-content">
+                    <div id="modal-nav">
+                        <span id="modal-info-page">기본 정보</span>
+                        <span id="modal-desc-page">책 소개</span>
+                        <span id="modal-review-page">리뷰</span>
+                        <span id="modal-quote-page">책 속 한마디</span>
+                    </div>
                     <div id="top-box">
                         <div id="left-box"></div>
                         <div id="right-box"></div>
@@ -203,7 +211,7 @@
     <footer id="ending">
         <div>
             <div class="Lastlogo">
-                <img src="resources/images/spotify.png" alt="">
+                <img src="{% static 'images/bookitup_logo3.png' %}" alt="">
             </div>
 
             <div class="endlst">
@@ -216,14 +224,15 @@
                 <ul id="recommendation-set">
                     <li>
                         <span>Recommendation</span>
-                        <a href="#">by preference</a>
-                        <a href="#">by keyword</a>
+                        <a href="/recommendation">by preference</a>
+                        <a href="/recommendation/keyword">by keyword</a>
                     </li>
                 </ul>
                 <ul id="community-set">
                     <li>
                         <span>Community</span>
-                        <a href="#">About Us</a>
+                        <a href="/board">Community</a>
+                        <a href="/about_us">About Us</a>
                     </li>
                 </ul>
             </div>

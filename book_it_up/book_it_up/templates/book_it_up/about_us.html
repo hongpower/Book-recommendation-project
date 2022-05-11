@@ -6,11 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="icon" href="{% static 'images/bookitup_logo3.png' %}">
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
     </script>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rcm.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
@@ -28,13 +32,13 @@
 
 </head>
 <body>
-        <header>
+    <header>
         <div>
             <div>
                 <nav>
                     {% if user_id %}
                         <ul class="left-nav">
-                            <li><a href="#">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/">Home</a></li>
                             <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
@@ -78,12 +82,12 @@
                         </ul>
                     {% else %}
                         <ul class="left-nav">
-                            <li><a href="/unlogged">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/unlogged">Home</a></li>
                             <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
-                            <li><a href="/unlogged">AboutUs</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
@@ -95,27 +99,60 @@
     </header>
 
     <section class="page-start">
+        <h2>책itUp을 소개합니다!</h2>
         <article>
-            <div class="book-img-container"> </div>
-        </article>
-        <article>
-            <div id='modal'>
-                <div class="close">닫기</div>
-                <div class="modal-content">
-                    <div id="top-box">
-                        <div id="left-box"></div>
-                        <div id="right-box"></div>
-                    </div>
-                    <div id="bottom-box">
-                        <div id="bottom-small-box"></div>
-                    </div>
-                </div>
+            <div class="avengers-img-box">
+                <img src="{% static 'images/어벤져스이미지.jpeg' %}" >
             </div>
+            <p>
+                📚책itUp📚은 책과 독자를 연결하는 도서 추천 플랫폼으로, 올바른 독서 습관 형성 및 좋은 독서 문화 정착을 장려합니다.
+                <br><br>
+                독서를 즐겨 하시던 분들은 독서에만 집중할 수 있도록,<br>
+                마음처럼 독서가 잘 안되시는 분들은 완독할 수 있도록,<br>
+                오벤져스가 도와드리겠습니다!<br>
+                <br><br>
+                좋아하는 책을 추천받고, 손쉽게 나만의 서재와 독서노트를 만들어보세요!<br>
+                오벤져스가 여러분의 독서를 응원합니다! ^^<br>
+                <br><br>
+                - 오벤져스 일동 -
+            </p>
         </article>
     </section>
 
-    <footer>
+    <footer id="ending">
+        <div>
+            <div class="Lastlogo">
+                <img src="{% static 'images/bookitup_logo3.png' %}" alt="">
+            </div>
 
+            <div class="endlst">
+                <ul id="main-set">
+                    <li>
+                        <span>Main</span>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+                <ul id="recommendation-set">
+                    <li>
+                        <span>Recommendation</span>
+                        <a href="/recommendation">by preference</a>
+                        <a href="/recommendation/keyword">by keyword</a>
+                    </li>
+                </ul>
+                <ul id="community-set">
+                    <li>
+                        <span>Community</span>
+                        <a href="/board">Community</a>
+                        <a href="/about_us">About Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="introduction">
+            <a href="#">오벤져스</a>
+            <a href="#">홍지수, 조성헌, 임지윤, 홍동수, 조원제</a>
+            <span>책itUp</span>
+        </div>
+        </div>
     </footer>
 
 </body>

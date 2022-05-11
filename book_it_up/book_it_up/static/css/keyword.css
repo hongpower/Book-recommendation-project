@@ -1,7 +1,10 @@
 *{
     text-align: center;
-
 }
+article{
+    height: 500px;
+}
+
 .topic-content{
     height: auto;
     margin-bottom: 60px;

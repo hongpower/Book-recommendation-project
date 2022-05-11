@@ -358,7 +358,8 @@ def modify_wishlist(request):
 
 # about_us 페이지
 def get_about_us(request):
-    return render('/about_us', 'about_us.html')
+    user_id = request.session.get('user_id')
+    return render(request, 'book_it_up/about_us.html', {'user_id': user_id})
 
 
 # 내정보 확인하는 페이지 연결해주는 함수 :
@@ -473,6 +474,7 @@ def profile(request): # 오른쪽 상단 로그인하면 나오는 프로필에 
 
 def history_register(request):
     user_id = request.session.get('user_id')
+    print('history-user-id',user_id)
     data = {'user_id': user_id}
     if request.method=="GET": # get으로 요청이 오면 html 을 반환
         return render(request,'book_it_up/history.html',data)

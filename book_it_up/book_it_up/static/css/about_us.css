@@ -1,0 +1,28 @@
+h2{
+    padding-top: 70px;
+
+}
+body article {
+    height: 500px;
+    padding: 50px;
+}
+.avengers-img-box{
+    width: 40%;
+    height: 300px;
+    float: left;
+    padding-left: 5%;
+    margin: auto;
+}
+.avengers-img-box img{
+    display: inline-block;
+    width: 100%;
+}
+p{
+    display: inline-block;
+    width: 40%;
+    margin: auto;
+    font-size: 13pt;
+    padding-left: 40px;
+    padding-right: 10%;
+    float: right;
+}

@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>검색 페이지</title>
+    <link rel="icon" href="{% static 'images/bookitup_logo3.png' %}">
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
     </script>
-<!--    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<!--    <link rel="stylesheet" href="{% static 'css/index-header.css' %}">-->
-<!--    <link rel="stylesheet" href="{% static 'css/index-section.css' %}">-->
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
@@ -32,13 +31,13 @@
 
 </head>
 <body>
-        <header>
+    <header>
         <div>
             <div>
-                <nav>
+               <nav>
                     {% if user_id %}
                         <ul class="left-nav">
-                            <li><a href="#">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/">Home</a></li>
                             <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
@@ -82,12 +81,12 @@
                         </ul>
                     {% else %}
                         <ul class="left-nav">
-                            <li><a href="/unlogged">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/unlogged">Home</a></li>
                             <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
-                            <li><a href="/unlogged">AboutUs</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>

@@ -4,23 +4,22 @@
 table{
     border-collapse: collapse;
     margin: auto;
-    margin-top: 50px;
-
+    margin-top: 0px;
 }
+article{
+    height: 500px;
+}
+
 body tr{
     height: 30px;
 }
 body tr:nth-child(1){
-    border-bottom: 2px solid rgba(2,2,2,0.3);
 }
 body th{
     font-size: 12pt;
     color: black;
 }
 /*첫번 째 */
-body tr{
-    border-bottom: 1px solid rgba(2,2,2, 0.3);
-}
 body tr td{
     font-size: 10pt;
     padding: 10px;
@@ -64,4 +63,92 @@ td > input[type="button"]{
 }
 .speed-page{
     margin: 0px 10px !important;
+}
+
+
+
+#update-form{
+    padding-top: 30px;
+}
+
+
+article:nth-child(1){
+    height: 60px;
+}
+
+*{
+    color: black;
+}
+h2{
+    padding-top: 30px;
+}
+body article:nth-child(2){
+    margin: auto;
+    margin-top: 30px;
+    width: 60%;
+    border-radius: 30px;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.05);
+}
+.board-form-container{
+    display: inline-block;
+    width: 100%;
+}
+
+body > form{
+    width: 51%;
+    margin-top: 30px;
+    border: none;
+    padding-top: 30px;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+textarea{
+    width: 90%;
+    height: 200px;
+    padding-left: 2%;
+    text-align: left;
+    padding-top: 2%;
+    overflow-y: scroll;
+    border: none;
+}
+tbody > tr{
+    height: 30px;
+}
+tbody > tr > td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+tbody td > input{
+    width: 90%;
+    height: 25px;
+    border: none;
+}
+tbody input{
+    text-align: left;
+    padding-left: 2%;
+}
+tbody th{
+    padding-left: 4%;
+}
+#id_query{
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    border: 1px solid;
+}
+
+.table-btns-box{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.table-btns-box > td > input{
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+    margin-right: 3%;
+    border-radius: 5px;
+
 }

@@ -9,6 +9,7 @@ client = MongoClient("mongodb://" + mongo_user + ":" + mongo_pw + "@" + ip_addre
 
 
 def rcm(request):
+
     # 1) user_id 겟 하기
     user_id = request.session.get('user_id')
 
@@ -16,6 +17,12 @@ def rcm(request):
     category_ratio_dict = dict()
 
     like_books = LikeTab.objects.filter(user_id=user_id).values()
+
+    # 만약 평가한 도서가 없다면:
+    print(len(like_books))
+    if len(like_books) < 19:
+        return render(request, 'book_it_up/error.html', {'user_id' : user_id})
+
     like_isbn = list()
     for book in like_books:
         like_isbn.append(book['book_id'])
@@ -52,18 +59,25 @@ def rcm(request):
 
     like_isbn = list()
 
+    print('카테고리 레시오 딕트',category_ratio_dict)
+    print()
+
     # 4) 비율만큼만 찾아오기
     for category in category_ratio_dict.keys():
         category_ratio = category_ratio_dict[category][2]
+        print('category_ratio' , category_ratio)
         for i in range(category_ratio):
+            print(category_ratio_dict[category])
+            print(category_ratio_dict[category][1])
             like_isbn.append(category_ratio_dict[category][1][i])
 
+    print('like_isbn뭐냐', like_isbn)
     ## 유사하지 않은 책 가져오는 함수:
     unrel_books_cover_lst = get_opposite_type_books(like_isbn, user_id)
 
     # 5) 해당 책들의 유사한 책들 담아오기
     db = client.book
-    collection = db.unrelative_book
+    collection = db.relative_book
 
     rel_books = collection.find({'isbn13': {"$in":like_isbn}})
 
@@ -116,22 +130,25 @@ def rcm(request):
 
 
 def get_opposite_type_books(like_isbn, user_id):
+    print('like_isbn', like_isbn)
+
     db = client.book
     collection = db.unrelative_book
 
     unrel_books = collection.find({'isbn13': {"$in": like_isbn}})
-
     unrel_books_lst = list()
 
     # 유사하지 않은 책 담기:
     for book in unrel_books:
+        print(book)
         for i in range(10):
             try:
+                print(book['books'])
                 unrel_book_isbn = (book['books'])[i]
                 unrel_books_lst.append(unrel_book_isbn)
             except:
                 break
-
+    print('unrel_books_lst', unrel_books_lst)
     # 7) 사용자가 싫어했던 책이 포함되면 제외하기
     dislike_books = DislikeTab.objects.filter(user_id=user_id).values()
 
@@ -145,7 +162,7 @@ def get_opposite_type_books(like_isbn, user_id):
     final_dict = dict()
 
     final_books = BookCover.objects.filter(book_id__in=unrel_books_lst)
-
+    print('여기에러,', len(final_books))
     rand_n = random.sample(range(len(final_books)), 100)
 
     # 5개씩 한 세트로 묶어서 넣기 위함 :

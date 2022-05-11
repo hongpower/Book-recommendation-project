@@ -2,6 +2,11 @@ h2{
     padding-top: 20px;
     padding-bottom: 20px;
 }
+#modal h2{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
 #rank-books h2{
     padding-top: 30px;
     padding-bottom: 0px;

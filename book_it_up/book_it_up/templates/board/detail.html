@@ -6,18 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 서재</title>
+    <link rel="icon" href="{% static 'images/bookitup_logo3.png' %}">
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
         var bookId = "{{ book_id }}"
     </script>
     <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rcm.css' %}">
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/star.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/history.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -44,7 +45,7 @@
                 <nav>
                     {% if user_id %}
                         <ul class="left-nav">
-                            <li><a href="#">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/">Home</a></li>
                             <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
@@ -88,12 +89,12 @@
                         </ul>
                     {% else %}
                         <ul class="left-nav">
-                            <li><a href="/unlogged">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/unlogged">Home</a></li>
                             <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
-                            <li><a href="/unlogged">AboutUs</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
@@ -105,9 +106,12 @@
     </header>
     <section class="page-start">
         <article>
+            <h2>도서 노트 상세조회</h2>
+        </article>
+        <article>
             <div>
                 <form id="update-form" method="post" action="update/{{dto.board_id}}">{% csrf_token %}
-                    <table border="1">
+                    <table>
                         <tr>
                             <th>작성자</th>
                             <td><input type="text" id="writer" value="{{dto.user_id}}" readonly></td>
@@ -124,8 +128,8 @@
                             <th>내용</th>
                             <td><textarea id=board-content name='board-content' rows="10" cols="60" readonly>{{dto.board_content}}</textarea></td>
                         </tr>
-                        <tr>
-                            <td colspan="2" align="right">
+                        <tr class="table-btns-box">
+                            <td colspan="2">
                                 <input type="button" value="목록" onclick="location.href='/board'">
                                 <input type="button" value="수정" id="update-toggle" onclick="contentUpdate()"> <!--id값을 같이 가져가야하므로 dto.id가 필요-->
                                 <input type="button" value="삭제" id="delete-toggle" onclick="location.href ='delete/{{dto.board_id}}'"> <!--id값을 가진애 하나를 제거-->
@@ -140,6 +144,12 @@
             <div id='modal'>
                 <div class="close">닫기</div>
                 <div class="modal-content">
+                    <div id="modal-nav">
+                        <span id="modal-info-page">기본 정보</span>
+                        <span id="modal-desc-page">책 소개</span>
+                        <span id="modal-review-page">리뷰</span>
+                        <span id="modal-quote-page">책 속 한마디</span>
+                    </div>
                     <div id="top-box">
                         <div id="left-box"></div>
                         <div id="right-box"></div>
@@ -153,8 +163,40 @@
     </section>
 
 
-    <footer>
+    <footer id="ending">
+        <div>
+            <div class="Lastlogo">
+                <img src="{% static 'images/bookitup_logo3.png' %}" alt="">
+            </div>
 
+            <div class="endlst">
+                <ul id="main-set">
+                    <li>
+                        <span>Main</span>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+                <ul id="recommendation-set">
+                    <li>
+                        <span>Recommendation</span>
+                        <a href="/recommendation">by preference</a>
+                        <a href="/recommendation/keyword">by keyword</a>
+                    </li>
+                </ul>
+                <ul id="community-set">
+                    <li>
+                        <span>Community</span>
+                        <a href="/board">Community</a>
+                        <a href="/about_us">About Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="introduction">
+            <a href="#">오벤져스</a>
+            <a href="#">홍지수, 조성헌, 임지윤, 홍동수, 조원제</a>
+            <span>책itUp</span>
+        </div>
+        </div>
     </footer>
 
 </body>

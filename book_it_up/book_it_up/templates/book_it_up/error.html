@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{% static 'js/error.js' %}"></script>
+    <script>
+    var userId = "{{ user_id }}"
+    alert('20개 이상의 도서에 좋아요를 해주세요')
+    location.href="/preference/?user_id=" + userId
+
+    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ user_id }}
+</body>
+</html>

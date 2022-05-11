@@ -6,12 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>도서 노트 작성하기</title>
+    <link rel="icon" href="{% static 'images/bookitup_logo3.png' %}">
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
         var bookId = "{{ book_id }}"
     </script>
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rcm.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/insert.css' %}">
@@ -42,7 +45,7 @@
                 <nav>
                     {% if user_id %}
                         <ul class="left-nav">
-                            <li><a href="#">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/">Home</a></li>
                             <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
@@ -61,7 +64,7 @@
                             <li style="width: 170px;">
                                 <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
                                     <div class="search-box">
-                                        <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+                                        <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px; " >
 <!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
                                         <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
                                     </div>
@@ -86,12 +89,12 @@
                         </ul>
                     {% else %}
                         <ul class="left-nav">
-                            <li><a href="/unlogged">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/unlogged">Home</a></li>
                             <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
-                            <li><a href="/unlogged">AboutUs</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
@@ -104,10 +107,12 @@
 
     <section class="page-start">
         <article>
+            <h2>도서노트 작성</h2>
+            <p>도서 제목을 입력한 후 원하는 도서를 선택하면 도서 노트 작성 공간이 생성됩니다.</p>
             <li>
                 <form method="get" action="/search" class="board-autocomplete-me">
                     <div class="board-search-box">
-                        <input type="text" id="id_query" name="q">
+                        <input type="text" id="id_query" name="q" placeholder="도서 제목을 입력해주세요">
 <!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
                     </div>
                 </form>
@@ -165,8 +170,40 @@
     </section>
 
 
-    <footer>
+    <footer id="ending">
+        <div>
+            <div class="Lastlogo">
+                <img src="{% static 'images/bookitup_logo3.png' %}" alt="">
+            </div>
 
+            <div class="endlst">
+                <ul id="main-set">
+                    <li>
+                        <span>Main</span>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+                <ul id="recommendation-set">
+                    <li>
+                        <span>Recommendation</span>
+                        <a href="/recommendation">by preference</a>
+                        <a href="/recommendation/keyword">by keyword</a>
+                    </li>
+                </ul>
+                <ul id="community-set">
+                    <li>
+                        <span>Community</span>
+                        <a href="/board">Community</a>
+                        <a href="/about_us">About Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="introduction">
+            <a href="#">오벤져스</a>
+            <a href="#">홍지수, 조성헌, 임지윤, 홍동수, 조원제</a>
+            <span>책itUp</span>
+        </div>
+        </div>
     </footer>
 
 </body>

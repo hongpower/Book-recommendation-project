@@ -113,6 +113,7 @@ input[type="text"], textarea{
 }
 input[type="password"], textarea{
     background: white;
+    font-family: 'Malgun gothic';
 }
 
 input, button{

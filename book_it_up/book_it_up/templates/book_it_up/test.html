@@ -4,13 +4,17 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>선호도 페이지</title>
+    <link rel="icon" href="{% static 'images/bookitup_logo3.png' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 <!--    <link rel="stylesheet" href="{% static 'css/index-header.css' %}">-->
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rcm.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/test.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 
     <script type="text/javascript">
@@ -37,7 +41,7 @@
                 <nav>
                     {% if user_id %}
                         <ul class="left-nav">
-                            <li><a href="#">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/">Home</a></li>
                             <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
@@ -81,12 +85,12 @@
                         </ul>
                     {% else %}
                         <ul class="left-nav">
-                            <li><a href="/unlogged">Logo</a></li>
+                            <li><img class='logo-img' src="{% static 'images/bookitup_logo3.png' %}"></li>
                             <li><a href="/unlogged">Home</a></li>
                             <li><a href="/unlogged">Preferences</a></li>
                             <li><a href="/unlogged">Recommendation</a></li>
                             <li><a href="/unlogged">Community</a></li>
-                            <li><a href="/unlogged">AboutUs</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
@@ -98,7 +102,7 @@
     </header>
     <section class="page-start">
         <br>
-        <h2>선호도 측정 페이지</h2>
+        <h2>선호도 측정</h2>
         <p>사용자가 도서에 대한 선호도를 입력할 수 있는 페이지입니다.</p>
         <article>
             <div class="book-img-container">
@@ -106,7 +110,7 @@
                 <span><i class="fas fa-thumbs-up like-btn btns fa-6x" style='position: absolute; top: 70px; left: 80px; z-index: 30'></i></span>
                 <span><i class="fas fa-thumbs-down dislike-btn btns fa-6x" style='position: absolute; top: 300px; left: 80px; z-index: 30'></i></span>
             </div>
-            <div>
+            <div style="margin-top: 30px;">
                 <span class="btn" style="cursor: pointer; background-color: rgba(256,256,256, 0.5); padding: 10px; border-radius: 5px; border: 0.5px solid black;">다음 책으로 이동</span>
             </div>
         </article>
@@ -114,6 +118,12 @@
             <div id='modal'>
                 <div class="close">닫기</div>
                 <div class="modal-content">
+                    <div id="modal-nav">
+                        <span id="modal-info-page">기본 정보</span>
+                        <span id="modal-desc-page">책 소개</span>
+                        <span id="modal-review-page">리뷰</span>
+                        <span id="modal-quote-page">책 속 한마디</span>
+                    </div>
                     <div id="top-box">
                         <div id="left-box"></div>
                         <div id="right-box"></div>
@@ -125,8 +135,40 @@
             </div>
         </article>
     </section>
-    <footer>
+    <footer id="ending">
+        <div>
+            <div class="Lastlogo">
+                <img src="{% static 'images/bookitup_logo3.png' %}" alt="">
+            </div>
 
+            <div class="endlst">
+                <ul id="main-set">
+                    <li>
+                        <span>Main</span>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+                <ul id="recommendation-set">
+                    <li>
+                        <span>Recommendation</span>
+                        <a href="/recommendation">by preference</a>
+                        <a href="/recommendation/keyword">by keyword</a>
+                    </li>
+                </ul>
+                <ul id="community-set">
+                    <li>
+                        <span>Community</span>
+                        <a href="/board">Community</a>
+                        <a href="/about_us">About Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="introduction">
+            <a href="#">오벤져스</a>
+            <a href="#">홍지수, 조성헌, 임지윤, 홍동수, 조원제</a>
+            <span>책itUp</span>
+        </div>
+        </div>
     </footer>
 </body>
 </html>

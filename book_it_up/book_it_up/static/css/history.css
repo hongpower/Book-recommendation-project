@@ -45,6 +45,7 @@ h2{
 table{
     margin: auto;
     border: none;
+    margin-bottom: 50px;
     border-collapse: collapse;
 }
 table td{
@@ -138,9 +139,10 @@ table tbody td:nth-child(5) {
 
 .his-search-result-container{
     width: 40%;
-    height: 600px;
+    height: 550px;
     float: left;
     padding-left: 10%;
+    padding-top: 50px;
 }
 .his-search-result-container > form > div button{
     border: none;
@@ -160,6 +162,7 @@ table tbody td:nth-child(5) {
 input[name="q"]{
     background: transparent;
     font-size: 12pt;
+    placeholder: '도서 제목을 입력해주세요';
 }
 
 .his-search-result-book{
