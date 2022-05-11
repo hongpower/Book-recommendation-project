@@ -1,0 +1,111 @@
+h2{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#rank-books h2{
+    padding-top: 30px;
+    padding-bottom: 0px;
+}
+#rank-books{
+    height: 700px;
+}
+#rank-container{
+}
+.rank{
+    width: 17%;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+}
+.rank:nth-child(1){
+    width: 18%;
+}
+.rank:nth-child(2){
+    width: 18%;
+}
+.rank:nth-child(3){
+    width: 18%;
+}
+.rank:nth-child(4){
+    width: 18%;
+}
+.rank:nth-child(5){
+    width: 18%;
+}
+
+.rank *{
+}
+.rank-cover{
+    background: rgba(256, 256,256, 0.5);
+    border-radius: 20px;
+    width: 70%;
+    height: 70%;
+    padding: 20px 20px;
+    padding-top: 40px;
+    margin: auto;
+}
+.rank-cover img{
+    box-shadow: 5px 5px 3px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    width: 90%;
+    height: 40%;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+.rank-cover img:hover{
+    transform: scale(1.05);
+    box-shadow: 8px 8px 3px rgba(0,0,0,0.5);
+}
+
+.rank-title{
+    font-size: 10pt;
+    height: 60px;
+}
+.rank-title span{
+    background: linear-gradient(to top, rgba(254, 241, 224, 0.5) 70%, transparent 50%);
+}
+.rank-score-avg, .rank-history-cnt{
+    font-size: 8pt;
+}
+#rank1 > div{
+    width: 70%;
+    height: 70%;
+}
+#rank2 > div{
+    width: 70%;
+    height: 70%;
+}
+#rank3 > div{
+    width: 70%;
+    height: 70%;
+}
+
+#gold-medal{
+    color: gold;
+    -webkit-text-fill-color: gold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    position: relative;
+    top: 65px;
+    left: -50px;
+}
+
+#silver-medal{
+    color: silver;
+    -webkit-text-fill-color: silver;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    position: relative;
+    top: 50px;
+    left: -60px;
+}
+
+#cooper-medal{
+    color: cooper;
+    -webkit-text-fill-color: rgb(184, 115, 51);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    position: relative;
+    top: 35px;
+    left: -70px;
+}

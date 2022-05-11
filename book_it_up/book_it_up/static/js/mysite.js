@@ -74,22 +74,22 @@ $(function(){
                 var like_count = data['like']
                 var dislike_count = data['dislike']
                 var total_count = data['total']
-                var wishlist_count = data['like']
-                var history_count = data['like']
+                var wishlist_count = data['wishlist']
+                var history_count = data['history']
                 like_percent = Math.round(like_count/total_count*100)
                 dislike_percent = 100 - Math.round(like_count/total_count*100)
                 usageStr += '<label>평가한 도서 수는? </label><br><span class=user-usage >'+total_count+'권</span><br>'
                 usageStr += '<label>찜한 도서수 수는? </label><br><span class=user-usage >'+wishlist_count+'권</span><br>'
                 usageStr += '<label>읽은 총 도서 수는? </label><br><span class=user-usage >'+history_count+'권</span><br>'
                 usageStr += '<label>평가한 도서의 좋아요/싫어요 비율은?</label><br><span class=user-usage>'+like_percent+'%/'+dislike_percent+'%</span><br>'
-                usageStr += "<div style='display: inline-block; width:200px; height:20px; background:white; border: 1px solid black; border-radius: 50px;'><div style='width: "+like_percent+"%; border-radius: 10px 0px 0px 10px; height: 20px; display: inline-block; background-color: lightblue';></div><div style='width:" + dislike_percent + "%; height: 20px; display: inline-block; border-radius: 0px 10px 10px 0px; background: lightpink';></div>"
+                usageStr += "<div style='display: inline-block; width:200px; height:20px; background:white; border: 1px solid black; border-radius: 50px;'><div style='width: "+like_percent+"%; border-radius: 10px 0px 0px 10px; height: 20px; display: inline-block; background-color: green';></div><div style='width:" + dislike_percent + "%; height: 20px; display: inline-block; border-radius: 0px 10px 10px 0px; background: brown';></div>"
                 // 당신은 엄격파, 후한파, 적당파
                 if (like_percent > 70){
-                    var evaluation = "당신은 후한 점수를 주는 편입니다."
+                    var evaluation = "후한 점수를 주는 편입니다."
                 } else if (like_percent < 30){
-                    var evaluation="당신은 엄격한 편이시군요"
+                    var evaluation="엄격한 편이시군요"
                 } else{
-                    var evaluation="당신은 다른 사람들과 비슷한 점수를 주는 편입니다."}
+                    var evaluation="다른 사람들과 비슷한 점수를 주는 편입니다."}
                 usageStr += "<p class='evaluation_quote'>"+evaluation +"</p>"
                 $(".usage").html(usageStr);
 

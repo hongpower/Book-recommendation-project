@@ -36,10 +36,10 @@
     </script>
 </head>
 <body>
-    <header>
+        <header>
         <div>
             <div>
-                 <nav>
+                <nav>
                     {% if user_id %}
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
@@ -50,12 +50,11 @@
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>좋아요 기반 추천</a></li>
-                                    <li class="submenu"><a href="#">메뉴 2</a></li>
-                                    <li class="submenu"><a href="#">메뉴 3</a></li>
+                                    <li class="submenu"><a href="/recommendation">by preference</a></li>
+                                    <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Community</a></li>
+                            <li><a href="/board">Community</a></li>
                             <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
@@ -78,14 +77,14 @@
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu" id="read_book"><a href="#"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
-                                    <li class="submenu"><a href="/board">독서노트</a></li>
+                                    <li class="submenu"><a href="{% url 'history_register' %}">My Library</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
-                        {% else %}
+                    {% else %}
                         <ul class="left-nav">
                             <li><a href="/unlogged">Logo</a></li>
                             <li><a href="/unlogged">Home</a></li>
@@ -95,7 +94,6 @@
                             <li><a href="/unlogged">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="/unlogged">Search</a></li>
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
                         </ul>
                     {% endif %}

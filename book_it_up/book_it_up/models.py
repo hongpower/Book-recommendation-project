@@ -80,13 +80,10 @@ class AuthUserUserPermissions(models.Model):
         db_table = 'auth_user_user_permissions'
         unique_together = (('user', 'permission'),)
 
-
-
-
-
 class Board(models.Model):
-    board_id = models.CharField(primary_key=True, max_length=20)
+    board_id = models.AutoField(primary_key=True)
     user = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
+    book_id = models.CharField(max_length=20, blank=True, null=True)
     board_content = models.TextField(blank=True, null=True)
     pubdate = models.DateField(blank=True, null=True)
     title = models.TextField(blank=True, null=True)
@@ -94,6 +91,8 @@ class Board(models.Model):
     class Meta:
         managed = False
         db_table = 'board'
+
+
 
 
 class Book(models.Model):
@@ -122,10 +121,6 @@ class BookCover(models.Model):
     class Meta:
         managed = False
         db_table = 'book_cover'
-
-
-
-
 
 class BookDesc(models.Model):
     book = models.OneToOneField(Book, models.DO_NOTHING, primary_key=True)

@@ -93,19 +93,25 @@ $(function(){
 
             data=data['books']
 
-            for(var i =0;i<10;i++){ // 상위 몇개 가져올지만 정하면 됨 -> 상위 10개만
+            for(var i=0;i<5;i++){ // 상위 몇개 가져올지만 정하면 됨 -> 상위 10개만
 
-                bookRank += '<tr>'
-                bookRank += '<td>'+(i+1)+'</td>'
-                bookRank += '<td>'+data[i].title+'</td>'
-                bookRank += '<td>'+data[i].score_avg+'</td>'
-                bookRank += '<td>'+data[i].history_cnt+'</td>'
-                bookRank += '</tr>'
+                bookRank += '<li id=rank'+(i+1)+" class='rank'>"
+                bookRank += '<div class="rank-cover"><img src='+data[i].cover+'></img>'
+                bookRank += '<div class="rank-title"><span>'+''+data[i].title+'</span></div>'
+                bookRank += '<div class="rank-score-avg">'+'평균 별점: '+data[i].score_avg+'</div>'
+                bookRank += '<div class="rank-history-cnt">'+'리뷰 수: '+data[i].history_cnt+'</div>'
+
+                bookRank += '</div></li>'
+
 
             }
+            $("#rank-container").html(bookRank);
+
+            $("#rank1").prepend('<i class="fa-solid fa-medal fa-4x" id="gold-medal"></i>')
+            $("#rank2").prepend('<i class="fa-solid fa-medal fa-3x" id="silver-medal"></i>')
+            $("#rank3").prepend('<i class="fa-solid fa-medal fa-2x" id="cooper-medal"></i>')
 
 
-            $(".rank-book").html(bookRank);
         }
     })
 })

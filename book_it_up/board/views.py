@@ -3,11 +3,11 @@ from .models import *
 from django.core.paginator import Paginator
 from django.utils import timezone
 from django.http import HttpResponse, JsonResponse
+from haystack.query import SearchQuerySet
 
 # Create your views here.
 def index(request):
     user_id = request.session.get('user_id')
-
 
     board = Board.objects.all().order_by('-board_id')
 
@@ -53,7 +53,8 @@ def insert_res(request):
          user_id=user_id,
          board_content =mycontent,
          pubdate =timezone.now(),
-         title = mytitle).save()
+         title = mytitle
+        ).save()
     #create 함수를 이용해 result 객체 생성, myname=myname , mytitle=mytitle... -> 각 요소값을 넣어줌
 
 
@@ -100,3 +101,29 @@ def booknote_search(request,book_id):
     data = {'user_id': user_id,'book_id': book_id}
 
     return render(request, 'board/insert.html',data)
+
+# 자동완성
+def board_auto_complete(request):
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+    # ajax 요청이라면 :
+    if is_ajax:
+        sqs = SearchQuerySet().autocomplete(content_auto=request.GET.get('q', ''))[:10]
+        suggestions = [[result.cover, result.title, result.book_id, result.author] for result in sqs]
+        print(suggestions)
+
+        context = {'results' : suggestions}
+
+        return JsonResponse(context, safe=False)
+
+    user_id = request.session.get('user_id')
+
+    if user_id:
+        final_dict = {}
+        final_dict['user_id'] = user_id
+        return render(request, 'search/search.html', final_dict)
+
+    else:
+        return render(request, 'search/search.html')
+
+    return render(request, 'search/search.html')

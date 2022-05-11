@@ -32,6 +32,14 @@ $(function(){
             }
         })
 
+        $("body").on("click", ".his-search-result-info", function(){
+             var bookId = $(this).find("img").prop('name')
+             var title = $(this).find(".his-search-result-title").text()
+            console.log(title)
+             $(".read-form-control[name='read-book-id']").val(bookId)
+             $(".read-form-control[name='read-book-title']").val(title)
+            }
+        )
     })
 function updateHistory(index,bookId){
 

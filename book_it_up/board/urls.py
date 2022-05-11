@@ -10,5 +10,6 @@ urlpatterns = [
     path('book_note/',views.booknote),
     path('detail/delete/<int:board_id>',views.delete),
     path('detail/update/<int:board_id>',views.update),
+    path('auto_complete/', views.board_auto_complete),
 
 ]

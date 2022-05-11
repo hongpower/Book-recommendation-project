@@ -8,6 +8,7 @@
     <title>main page</title>
     <link rel="stylesheet" href="{% static 'css/index-header.css' %}">
     <link rel="stylesheet" href="{% static 'css/index-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
@@ -52,10 +53,9 @@
                                 <ul class="hide-menu">
                                     <li class="submenu"><a href="/recommendation">by preference</a></li>
                                     <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
-                                    <li class="submenu"><a href="#">메뉴 3</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Community</a></li>
+                            <li><a href="/board">Community</a></li>
                             <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
@@ -78,9 +78,9 @@
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu" id="read_book"><a href="#"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
-                                    <li class="submenu"><a href="/board">독서노트</a></li>
+                                    <li class="submenu"><a href="{% url 'history_register' %}">My Library</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
@@ -95,7 +95,6 @@
                             <li><a href="/unlogged">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-<!--                            <li><a href="/unlogged">Search</a></li>-->
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
                         </ul>
                     {% endif %}
@@ -113,6 +112,11 @@
     </header>
 
     <section class="page-start">
+        <article id="rank-books">
+            <h2>책itUp 유저들 사이에서 핫한 책</h2>
+               <ul id="rank-container">
+               </ul>
+         </article>
         <article id="love-books">
             <h2>#연애세포 뿜뿜일 때, #설레고 싶은 날엔</h2>
             <div class="swiper-container">
@@ -180,28 +184,7 @@
                 <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
             </div>
         </article>
-         <article id="rank">평점순위
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>순위</th>
-                        <th>제목</th>
-                        <th>평균 별점</th>
-                        <th>읽은 책 등록 수</th>
-                    </tr>
-                </thead>
-                <tbody class="rank-book">
-
-                </tbody>
-
-            </table>
-
-        </article>
-        <article id="popularity">
-            인기도서
-        </article>
-        <article>
             <div id='modal'>
                 <div class="close">닫기</div>
                 <div class="modal-content">
@@ -217,8 +200,39 @@
         </article>
     </section>
 
-    <footer>
+    <footer id="ending">
+        <div>
+            <div class="Lastlogo">
+                <img src="resources/images/spotify.png" alt="">
+            </div>
 
+            <div class="endlst">
+                <ul id="main-set">
+                    <li>
+                        <span>Main</span>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+                <ul id="recommendation-set">
+                    <li>
+                        <span>Recommendation</span>
+                        <a href="#">by preference</a>
+                        <a href="#">by keyword</a>
+                    </li>
+                </ul>
+                <ul id="community-set">
+                    <li>
+                        <span>Community</span>
+                        <a href="#">About Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="introduction">
+            <a href="#">오벤져스</a>
+            <a href="#">홍지수, 조성헌, 임지윤, 홍동수, 조원제</a>
+            <span>책itUp</span>
+        </div>
+        </div>
     </footer>
 
 </body>

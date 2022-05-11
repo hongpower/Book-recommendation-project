@@ -19,17 +19,21 @@ def index(request):
         password = request.POST.get("password")
 
         res_data = {}
-
         try:
-            user = User.objects.get(user_id=username, user_pwd=make_password(password,'key1'))
+            user = User.objects.get(user_id=username)
+            print('>>>>>>>>>>>>>>>>', check_password(password, user.user_pwd))
+            if check_password(password, user.user_pwd):
+                # true 일 때
+                request.session['user_id'] = username
+                return redirect("/")
+
+            else:
+                messages.add_message(request, messages.ERROR, '아이디 혹은 비밀번호가 틀립니다')
+                return render(request, 'login/index.html')
 
         except:
             messages.add_message(request, messages.ERROR, '아이디 혹은 비밀번호가 틀립니다')
             return render(request, 'login/index.html')
-
-        request.session['user_id']=username
-        return redirect("/")
-
 
 
 #회원가입
@@ -60,8 +64,6 @@ def signup(request): # 회원가입 코드
         elif (username.islower() and any(username.isdigit for username in username))==False:
             messages.add_message(request, messages.ERROR, '아이디는 영어와 숫자의 조합만 가능합니다')
             return redirect('signup')
-
-
 
         elif password != password_re: # 비밀번호 확인
             messages.add_message(request, messages.ERROR, '비밀번호를 확인해 주세요')

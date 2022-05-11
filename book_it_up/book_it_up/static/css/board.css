@@ -1,0 +1,67 @@
+/*가로선만 긋고 헤드는 조금더 크고*/
+/*책 제목은 다른 색상으로*/
+/*작성 시간은 조금 더 연한 색으로*/
+table{
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 50px;
+
+}
+body tr{
+    height: 30px;
+}
+body tr:nth-child(1){
+    border-bottom: 2px solid rgba(2,2,2,0.3);
+}
+body th{
+    font-size: 12pt;
+    color: black;
+}
+/*첫번 째 */
+body tr{
+    border-bottom: 1px solid rgba(2,2,2, 0.3);
+}
+body tr td{
+    font-size: 10pt;
+    padding: 10px;
+}
+/*도서제목*/
+body tr td:nth-child(3) a{
+    color: rgba(126, 105, 85, 1) !important;
+}
+/*작성날짜*/
+body tr td:nth-child(4){
+    color: rgba(126, 105, 85, 0.5);
+    font-size: 9pt;
+}
+
+td > input[type="button"]{
+    background: rgba(211,211,211,0.3);
+    padding: 7px 13px;
+    font-size: 10pt;
+    color: black;
+    cursor: pointer;
+    float: right;
+    border-radius: 3px;
+    z-index: 10;
+}
+.page-bar{
+    display: inline-block;
+    padding: 20px;
+    position: relative;
+    top : -11%;
+    text-align: center;
+}
+.page-bar a, .page-bar b{
+    margin: 0px 7px;
+}
+.page-bar b{
+    color: black;
+}
+.page-bar a:hover{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+.speed-page{
+    margin: 0px 10px !important;
+}

@@ -35,26 +35,25 @@
     </script>
 </head>
 <body>
-    <header>
+        <header>
         <div>
             <div>
-                 <nav>
+                <nav>
                     {% if user_id %}
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/preference?user_id={{user_id}}">Test</a></li>
+                            <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
                                 <div class="parent-menu">
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="submenu"><a href="#">메뉴 2</a></li>
-                                    <li class="submenu"><a href="#">메뉴 3</a></li>
+                                    <li class="submenu"><a href="/recommendation">by preference</a></li>
+                                    <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Community</a></li>
+                            <li><a href="/board">Community</a></li>
                             <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
@@ -77,9 +76,9 @@
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu" id="read_book"><a href="#"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
-                                    <li class="submenu"><a href="/board">독서노트</a></li>
+                                    <li class="submenu"><a href="{% url 'history_register' %}">My Library</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
@@ -94,7 +93,6 @@
                             <li><a href="/unlogged">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="/unlogged">Search</a></li>
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
                         </ul>
                     {% endif %}
@@ -104,20 +102,67 @@
     </header>
 
     <section class="page-start">
-        <article>
-            <div class="book-row">
-                <div class="book-read-line">
-
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message.tags }}
-                            {{ message.message }}
-                        {% endfor %}
-                    {% endif %}
+        <article class="his-search-result-container">
+            <form method="get" action="/search/history">
+                <div>
+                    <span>
+                        <input name="q" type="text" class="big-search-bar">
+                        <button type="submit" value='' style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
+                    </span>
                 </div>
+            </form>
+            {% if query %}
+                {% for result in page.object_list %}
+                    <div class="his-search-result-book">
+                        <div class="his-search-result-info">
+                            <img src='{{ result.object.cover }}' name="{{ result.object.book_id }}">
+                            <div>
+                                <span name="{{ result.object.book_id }}" class="his-search-result-title">{{ result.object.title }}</span><br>
+                                <span class="his-search-result-author">{{ result.object.author }}</span><br>
+                                <span class="his-search-result-publisher">{{ result.object.publisher }}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>해당 책이 없습니다.</p>
+                {% endfor %}
+
+            <div class="his-page-container">
+                {% if page.has_previous or page.has_next %}
+                        <div class="his-page-directions">
+                            {% if page.has_previous %}
+                            <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">이전 페이지</a>
+                            {% else %}
+                            <a>이전 페이지</a>
+                            {% endif %}
+
+                            {% if page.has_next %}
+                            <a href="?q={{ query }}&amp;page={{ page.next_page_number }}">다음 페이지</a>
+                            {% else %}
+                            <a>다음 페이지</a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% else %}
+
+                {% endif %}
             </div>
+        </article>
+
+        <article class="book-his-register-container">
 
             <div class="book-row">
+                <div class="error-box">
+                    <div class="error-msg-box">
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{ message.tags }}
+                                {{ message.message }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
                 <h2>독서 기록장 신규 등록</h2>
                 <p class="page-desc">독서 기록을 할 수 있는 공간입니다. 날짜 등록은 필수가 아닙니다.</p>
                     <div class="book-read-line">
@@ -125,9 +170,13 @@
                             <div class="form-group">
                                 <input type="hidden" class="read-form-control" name="read-user-id" value="{{user_id}}">
                             </div>
+                            <div class="search-section">
 
+                            </div>
                             <div class="form-group">
-                                <label >책 ID:  </label>
+                                <label >책제목:  </label>
+                                <input type="text" class="read-form-control" name='read-book-title' ><br><br><br>
+                                <label >ISBN:  </label>
                                 <input type="text" class="read-form-control" name='read-book-id' >
                             </div>
                             <div class="form-group">
@@ -174,6 +223,7 @@
                 </div>
             </div>
         </article>
+
         <article>
             <h2>독서 기록장 조회</h2>
             <table>

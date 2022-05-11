@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>하이</title>
+    <title>내 정보 페이지</title>
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
@@ -34,7 +34,7 @@
     </script>
 </head>
 <body>
-    <header>
+        <header>
         <div>
             <div>
                 <nav>
@@ -48,12 +48,11 @@
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>좋아요 기반 추천</a></li>
-                                    <li class="submenu"><a href="#">메뉴 2</a></li>
-                                    <li class="submenu"><a href="#">메뉴 3</a></li>
+                                    <li class="submenu"><a href="/recommendation">by preference</a></li>
+                                    <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Community</a></li>
+                            <li><a href="/board">Community</a></li>
                             <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
@@ -76,14 +75,14 @@
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu" id="read_book"><a href="#"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
-                                    <li class="submenu"><a href="/board">독서노트</a></li>
+                                    <li class="submenu"><a href="{% url 'history_register' %}">My Library</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
-                        {% else %}
+                    {% else %}
                         <ul class="left-nav">
                             <li><a href="/unlogged">Logo</a></li>
                             <li><a href="/unlogged">Home</a></li>
@@ -93,7 +92,6 @@
                             <li><a href="/unlogged">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="/unlogged">Search</a></li>
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
                         </ul>
                     {% endif %}

@@ -1,6 +1,7 @@
 $(function(){
         var userId= $('#my-info>div>a').text()
 
+
         $.ajax({
             url: "/mysite/all_wish/mysite_wishlistbook",
             data: {'user_id': userId},
@@ -22,6 +23,8 @@ $(function(){
 
 
                 $(".wish-img-article").html(wishBookImgStr);
+                // wishlist는 하트 버튼 누른 상태로 나오기
+                $(".wishlist-btn").toggleClass('in_wishlist')
             }
         })
 

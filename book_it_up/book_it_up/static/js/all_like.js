@@ -1,6 +1,5 @@
 $(function(){
 
-//        $(".like-img-article").empty()
         var userId= $('#my-info>div>a').text()
 
         $.ajax({
@@ -23,6 +22,8 @@ $(function(){
 
 //                console.log(likeBookImgStr)
                 $(".like-img-article").html(likeBookImgStr);
+                // 좋아요는 다 미리 눌려져서 나오기
+                $(".like-btn").toggleClass('in_likes')
             }
         })
 

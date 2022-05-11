@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>도서 기록 작성하기</title>
+    <title>도서 노트 작성하기</title>
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/star.css' %}">
+    <link rel="stylesheet" href="{% static 'css/insert.css' %}">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/history.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_auto_complete.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,6 +27,7 @@
     <script src="{% static 'js/swiper.js' %}"></script>
     <script src="{% static 'js/swiper.min.js' %}"></script>
     <script src="{% static 'js/search_auto_complete.js' %}"></script>
+    <script src="{% static 'js/board_search_auto_complete.js' %}"></script>
     <script src="{% static 'js/history.js' %}"></script>
     <script src="{% static 'js/star.js' %}"></script>
     <script src="{% static 'js/booknote.js' %}"></script>
@@ -36,27 +36,26 @@
     </script>
 </head>
 <body>
-    <header>
+       <header>
         <div>
             <div>
-                 <nav>
+                <nav>
                     {% if user_id %}
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
+                            <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
                                 <div class="parent-menu">
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="submenu"><a href="#">메뉴 2</a></li>
-                                    <li class="submenu"><a href="#">메뉴 3</a></li>
+                                    <li class="submenu"><a href="/recommendation">by preference</a></li>
+                                    <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">AboutUs</a></li>
+                            <li><a href="/board">Community</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li style="width: 170px;">
@@ -78,9 +77,9 @@
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu" id="read_book"><a href="#"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
-                                    <li class="submenu"><a href="/board">독서노트</a></li>
+                                    <li class="submenu"><a href="{% url 'history_register' %}">My Library</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
@@ -95,7 +94,6 @@
                             <li><a href="/unlogged">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="/unlogged">Search</a></li>
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
                         </ul>
                     {% endif %}
@@ -106,21 +104,37 @@
 
     <section class="page-start">
         <article>
-            <div class="book-img-container">
+            <li>
+                <form method="get" action="/search" class="board-autocomplete-me">
+                    <div class="board-search-box">
+                        <input type="text" id="id_query" name="q">
+<!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
+                    </div>
+                </form>
+            </li>
+        </article>
 
+
+        <article>
+            <div class="book-small-img-container">
+                <img>
             </div>
-            <div>
+            <div class="board-form-container">
                 <form action="/board/insertres/" method="post">{% csrf_token %}
-                <table border="1">
+                <table>
                     <tr>
-                        <th>책 ID</th>
+                        <th>ISBN</th>
                         <td><input type='text' name="book_id" id="book-id" value="{{book_id}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th>책제목</th>
+                        <td><input type='text' name="book_title" id="book-title" value="{{book_title}}" readonly></td>
                     </tr>
                     <tr>
                         <th>내용</th>
                         <td><textarea rows="10" cols="60" name="mycontent"></textarea></td>
                     </tr>
-                    <tr>
+                    <tr class="table-btns-box">
                         <td colspan="2" align="right">
                             <input type="button" value="취소" onclick="location.href='/board'">
 

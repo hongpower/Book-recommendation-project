@@ -100,6 +100,9 @@ def usage(request):
     history=BookHistory.objects.filter(user_id=user_id)
 
     data = {'like':len(like),'dislike':len(dislike),'total':len(like)+len(dislike),'wishlist':len(wish),'history':len(history)}
+    for d in data:
+        if data[d]=="undefined":
+            data[d] == 0
 
     return JsonResponse(data)
 

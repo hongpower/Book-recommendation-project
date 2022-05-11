@@ -23,25 +23,25 @@
 
 </head>
 <body>
-    <header>
+        <header>
         <div>
             <div>
-                  <nav>
+                <nav>
                     {% if user_id %}
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/preference?user_id={{user_id}}">Test</a></li>
+                            <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
                                 <div class="parent-menu">
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>by preference</a></li>
-                                    <li class="submenu"><a href="{% url 'keyword' %}">by keywords</a></li>
+                                    <li class="submenu"><a href="/recommendation">by preference</a></li>
+                                    <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Community</a></li>
+                            <li><a href="/board">Community</a></li>
                             <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
@@ -64,9 +64,9 @@
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu" id="read_book"><a href="#"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
-                                    <li class="submenu"><a href="/board">독서노트</a></li>
+                                    <li class="submenu"><a href="{% url 'history_register' %}">My Library</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
@@ -81,7 +81,6 @@
                             <li><a href="/unlogged">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="/unlogged">Search</a></li>
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
                         </ul>
                     {% endif %}

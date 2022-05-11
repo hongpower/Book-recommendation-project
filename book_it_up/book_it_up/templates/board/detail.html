@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>도서 기록 작성하기</title>
+    <title>내 서재</title>
     <script type="text/javascript">
         // 외부에 js 파일에서 django 변수 접근이 불가능하기 때문에 django 변수 접근용 js는 html 내에 따로로 만들어주기
         var userId = "{{ user_id }}"
         var bookId = "{{ book_id }}"
     </script>
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
     <link rel="stylesheet" href="{% static 'css/book_img.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
@@ -37,27 +38,26 @@
     </script>
 </head>
 <body>
-    <header>
+        <header>
         <div>
             <div>
-                 <nav>
+                <nav>
                     {% if user_id %}
                         <ul class="left-nav">
                             <li><a href="#">Logo</a></li>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/test?user_id={{user_id}}">Test</a></li>
+                            <li><a href="/preference?user_id={{user_id}}">Preference</a></li>
                             <li class="menu">
                                 <div class="parent-menu">
                                     <a href="#">Recommendation</a>
                                 </div>
                                 <ul class="hide-menu">
-                                    <li class="submenu"><a href="{% url 'rcm' %}"}>메뉴 1</a></li>
-                                    <li class="submenu"><a href="#">메뉴 2</a></li>
-                                    <li class="submenu"><a href="#">메뉴 3</a></li>
+                                    <li class="submenu"><a href="/recommendation">by preference</a></li>
+                                    <li class="submenu"><a href="/recommendation/keyword">by keywords</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">AboutUs</a></li>
+                            <li><a href="/board">Community</a></li>
+                            <li><a href="/about_us">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
                             <li style="width: 170px;">
@@ -79,9 +79,9 @@
                                             <p id="nickname"></p>
                                         </div>
                                     </li>
-                                    <li class="submenu" id="read_book"><a href="{% url 'history_register' %}"></a></li>
+                                    <li class="submenu" id="read_book"><a href="#"></a></li>
                                     <li class="submenu"><a href="{% url 'mysite' %}">My page</a></li>
-                                    <li class="submenu"><a href="/board">독서노트</a></li>
+                                    <li class="submenu"><a href="{% url 'history_register' %}">My Library</a></li>
                                     <li class="submenu"><a href=" {% url 'logout' %} ">Logout</a></li>
                                 </ul>
                             </li>
@@ -96,7 +96,6 @@
                             <li><a href="/unlogged">AboutUs</a></li>
                         </ul>
                         <ul class="right-nav">
-                            <li><a href="/unlogged">Search</a></li>
                             <li><a href=" {% url 'index' %} ">Login/Signup</a></li>
                         </ul>
                     {% endif %}

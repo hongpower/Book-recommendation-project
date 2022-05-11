@@ -1,6 +1,6 @@
 $(function(){
     $.ajax({
-        url: "/test/getbook",
+        url: "/preference/getbook",
         data:{'first':'first'},
         dataType: 'json',
         success: function (data) {
@@ -28,7 +28,7 @@ $(function(){
 
 function getAnotherBook(bookId,btnType){
     $.ajax({
-        url: "/test/getbook",
+        url: "/preference/getbook",
         data: {'user_id': userId,'book_id':bookId,'btn_type':btnType},
         success: function (data) {
             data=data['books']

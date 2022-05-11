@@ -515,16 +515,15 @@ def history_register(request):
 
             return redirect("history_register")
 
-
 def history(request):
-
     user_name=request.GET.get('user_id')
 
     his= BookHistory.objects.filter(user_id=user_name).values() #user_id 컬럼과 같은 값은 모든 값들을 가져와 his 변수에 저장
+
     try:
         chk=request.GET.get('chk')
-
         datetime.sleep(1.5)
+
     except:
         pass
 
@@ -573,7 +572,6 @@ def history_update(request):
     start_date=request.GET.get('start_date')
     end_date=request.GET.get('end_date')
     book_id=request.GET.get('book_id')
-
 
 
     book_update = BookHistory.objects.get(user_id=user_name,book_id=book_id) # 북히스토리 모델에서 user_id와 book_id 일치하는 애 가져온다

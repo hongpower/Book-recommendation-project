@@ -115,3 +115,98 @@ table tbody td:nth-child(5) {
     cursor: pointer;
 
 }
+
+.book-his-register-container{
+    width: 50%;
+    height: 600px;
+    float: right;
+}
+.book-row{
+    padding-top: 60px;
+    height: 100%;
+}
+.book-read-line{
+    margin: auto;
+    height: 90%;
+}
+
+/* 검색 기능은 여기부터 */
+.his-search-result-container > form{
+    height: 50px;
+    padding-top: 30px;
+}
+
+.his-search-result-container{
+    width: 40%;
+    height: 600px;
+    float: left;
+    padding-left: 10%;
+}
+.his-search-result-container > form > div button{
+    border: none;
+    padding: 3px;
+    border-radius: 5px;
+    background: transparent;
+}
+.his-search-result-container > form > div button > i{
+    color: rgb(126, 105, 85);
+}
+.his-search-result-container > form > div > span{
+    background: white;
+    border-radius: 10pt;
+    padding: 7px;
+    border: 1px solid rgb(126, 105, 85);
+}
+input[name="q"]{
+    background: transparent;
+    font-size: 12pt;
+}
+
+.his-search-result-book{
+    margin: 10px;
+    cursor: pointer;
+}
+.his-search-result-info{
+    background: lightgray;
+    width: 70%;
+    height: 100px;
+    padding: 10px 30px;
+    margin: auto;
+}
+.his-search-result-info img{
+    width: 65px;
+    height: 100px;
+    float: left;
+}
+.his-search-result-title{
+    padding: 5px;
+    font-size: 14px;
+    color: black;
+}
+.his-search-result-author{
+    font-size: 12px;
+    padding-top: 3px;
+}
+.his-search-result-publisher{
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+/* 페이지 관련 */
+.his-page-container{
+    text-align: left;
+}
+.his-page-directions{
+    padding-top: 10px;
+}
+.his-page-directions > a{
+    padding:5px;
+    font-size: 10pt;
+    padding: 5px 10px;
+    background: rgba(256, 256, 256, 0.7);
+    border: none;
+    transition: all .2s ease-in;
+}
+.his-page-directions > a:hover {
+    transform: scale(1.1)
+}
