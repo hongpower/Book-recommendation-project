@@ -2,12 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1ffe1ab-91c8-4c0a-bc7f-2890f8f98931" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/multicampus_ovengers.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/ovengers_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book_it_up/static/images/오벤져스_단체사진.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/css/insert.css" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/css/insert.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/css/keyword.css" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/css/keyword.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/css/search_auto_complete.css" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/css/search_auto_complete.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/history.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/static/js/keyword.js" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/static/js/keyword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/board/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/board/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/board/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/board/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/board/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/board/insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/about_us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_like.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_like.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/all_wishlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/book_it_up/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/book_it_up/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/rcm/keyword.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/rcm/keyword.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/rcm/rcm.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/rcm/rcm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/templates/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/templates/search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_it_up/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_it_up/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/generic_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/generic_views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rcm/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rcm/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rcm/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rcm/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../forpie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../forpie/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

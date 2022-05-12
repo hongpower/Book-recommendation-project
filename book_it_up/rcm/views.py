@@ -259,6 +259,27 @@ def get_topic(request):
 
     return render(request, 'rcm/keyword.html', final_dict)
 
+def get_topic_refresh(request):
+    user_id = request.session.get('user_id')
+
+    # 1) 키워드 리스트 랜덤으로 10개 정도 뽑아오기
+    db = client.book
+    collections = db.topic
+
+    topic_lst = list(list(topic.keys())[1] for topic in collections.find())
+
+    rand_n = random.sample(range(len(topic_lst)), 10)
+    final_topic_lst = list()
+
+    for n in rand_n:
+        final_topic_lst.append(topic_lst[n])
+
+    final_dict = dict()
+    final_dict['user_id'] = user_id
+    final_dict['topic_lst'] = final_topic_lst
+
+    return JsonResponse(final_dict)
+
 # 사용자가 토픽 고르고 버튼 누르면 추천해주는 함수
 def get_topic_rcm(request):
     user_id = request.GET.get('user_id')

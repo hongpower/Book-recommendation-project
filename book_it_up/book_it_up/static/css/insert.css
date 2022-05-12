@@ -8,7 +8,7 @@ h2{
     padding-top: 30px;
 }
 body article:nth-child(1){
-    height: 400px;
+    height: 450px;
 }
 body article:nth-child(2){
     display: none;

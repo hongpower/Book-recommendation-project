@@ -59,7 +59,7 @@ td > button[type="submit"]{
 .search-result-book{
     display: inline-block;
     width: 1000px;
-    height: 200px;
+    height: 300px;
 }
 .search-result-book-img{
     display: inline-block;
@@ -73,11 +73,11 @@ td > button[type="submit"]{
     text-align: left;
 }
 .search-result-title{
-    font-size: 20pt;
+    font-size: 16pt;
     font-style: bold;
 }
 .search-result-author{
-    font-size: 15pt;
+    font-size: 13pt;
 }
 .search-result-isbn13{
     font-size: 10pt;

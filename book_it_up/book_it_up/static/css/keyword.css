@@ -73,6 +73,24 @@ p{
     font-size: 16pt;
     box-shadow: 3px 3px rgba(0,0,0,0.5);
     cursor: pointer;
+    position: relative;
+    left: 8%;
+    transition: background 0s 1s, color 0s 1s, transform .2s ease-in-out;
+}
+
+.refresh-btn{
+    padding: 13px 35px;
+    position: relative;
+    margin-top: 30pt;
+
+    border: none;
+    border-radius: 15px;
+    background: darkorange;
+    color: white;
+    font-size: 8pt;
+    box-shadow: 3px 3px rgba(0,0,0,0.5);
+    cursor: pointer;
+    float: right;
     transition: background 0s 1s, color 0s 1s, transform .2s ease-in-out;
 }
 

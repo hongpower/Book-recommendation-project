@@ -58,6 +58,7 @@
                                 <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
                                     <div class="search-box">
                                         <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+                                        <input type="hidden" class="read-form-control" name="user-id" value="{{user_id}}">
 <!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
                                         <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
                                     </div>
@@ -102,7 +103,8 @@
         <h2>책itUp을 소개합니다!</h2>
         <article>
             <div class="avengers-img-box">
-                <img src="{% static 'images/어벤져스이미지.jpeg' %}" >
+                <img src="{% static 'images/오벤져스_단체사진.PNG' %}" >
+                <h5><오벤져스 단체사진></h5>
             </div>
             <p>
                 📚책itUp📚은 책과 독자를 연결하는 도서 추천 플랫폼으로, 올바른 독서 습관 형성 및 좋은 독서 문화 정착을 장려합니다.

@@ -10,10 +10,10 @@ $(function(){
                 str = ''
 
                 data=data['books']
-
+                console.log(data)
                 for(var i =0;i<data.length;i++){
 
-                    readBookImgStr = "<img class='book-img'  src=" + data[i].cover + " name=" + data[i].book_id+ "width=100 height=100>"
+                    readBookImgStr = "<img class='book-img'  src=" + data[i].cover + " name=" + data[i].book_id+ " width=100 height=100>"
                     str += '<tr>'
                     str += '<td>'+readBookImgStr+'</td>'
                     str +=  '<td>' + data[i].title +'</td>'
@@ -41,9 +41,11 @@ $(function(){
             }
         )
     })
-function updateHistory(index,bookId){
 
+function updateHistory(index,bookId){
     //if $('.modify').
+    console.log('업뎃',index, bookId)
+
     var classname = '.modify'+index.toString()
     if ($(classname).attr('readonly')){
         //수정
@@ -51,13 +53,14 @@ function updateHistory(index,bookId){
         $('#update-toggle'+index).html('저장')
 
     }else{
+        console.log('코드 진짜')
         //저장
         var username = $("input[name='read-user-id']").val()
         var score = $('#score'+index).val()
         var start_date = $('#start'+index).val()
         var end_date = $('#end'+index).val()
 
-
+        console.log(username, score, start_date)
         $.ajax({
             url: "/history_register/history_update",
             data: {'user_id': username , 'score':score, 'start_date':start_date,'end_date':end_date,'book_id':bookId},
@@ -100,7 +103,7 @@ function deleteHistory(index,bookId){
 function createHistory(){
     $('.book-img-container').empty()
         var username = $("input[name='read-user-id']").val()
-
+        console.log(username)
 
 
         setTimeout(function(){

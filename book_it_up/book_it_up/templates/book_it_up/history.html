@@ -64,6 +64,7 @@
                                 <form method="get" action="/search" class="autocomplete-me" style="width: 170px;">
                                     <div class="search-box">
                                         <input type="text" id="id_q" name="q" style="width: 120px; margin: 0px; font-size: 12px; height: 18px;">
+                                        <input type="hidden" class="read-form-control" name="user-id" value="{{user_id}}">
 <!--                                        <input type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;">-->
                                         <button type="submit" value='' class="search-submit" style="width: 30px; margin: 0px;"><i class="fas fa-search"></i></button>
                                     </div>
@@ -170,7 +171,8 @@
                 <h2>내 서재 도서 신규 등록</h2>
                 <p class="page-desc">독서 기록을 할 수 있는 공간입니다. 왼쪽 검색창에서 도서 제목을 검색하고 선택해주세요. 날짜 등록은 필수가 아닙니다.</p>
                     <div class="book-read-line">
-                        <form method="POST" action="." autocomplete="off">{% csrf_token %}
+<!--                        <form method="POST" action="." autocomplete="off">{% csrf_token %}-->
+                        <form method="POST" action="/history_register/" autocomplete="off">{% csrf_token %}
                             <div class="form-group">
                                 <input type="hidden" class="read-form-control" name="read-user-id" value="{{user_id}}">
                             </div>
@@ -182,6 +184,7 @@
                                 <input type="text" class="read-form-control" name='read-book-title' ><br><br><br>
                                 <label >ISBN:  </label>
                                 <input type="text" class="read-form-control" name='read-book-id' >
+                                <input type="hidden" class="read-form-control" name="user_id" value="{{user_id}}">
                             </div>
                             <div class="form-group">
 <!--                                <label >별점: </label>-->

@@ -1,7 +1,11 @@
 $(function(){
-    // 토픽 클릭하면 클래스 주기
-    $(".topic").click(function(){
-        $(this).toggleClass('in-topics')
+    //토픽 클릭하면 클래스 주기
+//    $(".topic").click(function(){
+//
+//        $(this).toggleClass('in-topics')
+//    })
+    $(".topic-box").on("click",'.topic', function(e){
+        $(e.target).toggleClass('in-topics')
     })
 
     $(".start-rcm-btn").click(function(){
@@ -60,4 +64,29 @@ $(function(){
             }
         })
     })
+
+    $(".refresh-btn").on("click", function(){
+
+        $.ajax({
+            url: "/recommendation/get_topic_refresh",
+            dataType: 'json',
+            success: function(data){
+                data = data['topic_lst']
+                console.log(data)
+                str = ""
+
+                $(".topic-box").empty()
+
+                for(var i=0; i<data.length; i++){
+                    var topic = data[i]
+                    str += "<span class='topic'>" + topic + "</span>"
+
+                    }
+
+                $(".topic-box").append(str)
+            }
+
+        })
+    })
+
 })

@@ -150,24 +150,24 @@ def index(request):
         if isbn_lst.count(isbn) > 3:
             final_keyword_isbn_lst.append(isbn)
 
-    # 3) user 정보가 없거나 19세 이하일 때는 성인물 금지:
-    try:
-        user_birth = User.objects.filter(user_id=user_id)[0].birth
-        if user_birth.year > 2002 :
-            user_identity = "underage"
-        else :
-            user_identity="adult"
-
-    except:
-        user_identity = "unknown"
-
-    # 4) 해당 isbn으로 책 정보 가져오기
-    if (user_identity == "underage") | (user_identity=="unknown"):
-        filtered_books = Book.objects.filter(book_id__in=final_keyword_isbn_lst).filter(adult=False)
-        filtered_book_isbn = [bk.book_id for bk in filtered_books]
-        love_books = BookCover.objects.filter(book_id__in=filtered_book_isbn)
-    else:
-        love_books = BookCover.objects.filter(book_id__in=final_keyword_isbn_lst)
+    # # 3) user 정보가 없거나 19세 이하일 때는 성인물 금지:
+    # try:
+    #     user_birth = User.objects.filter(user_id=user_id)[0].birth
+    #     if user_birth.year > 2002 :
+    #         user_identity = "underage"
+    #     else :
+    #         user_identity="adult"
+    #
+    # except:
+    #     user_identity = "unknown"
+    #
+    # # 4) 해당 isbn으로 책 정보 가져오기
+    # if (user_identity == "underage") | (user_identity=="unknown"):
+    #     filtered_books = Book.objects.filter(book_id__in=final_keyword_isbn_lst).filter(adult=False)
+    #     filtered_book_isbn = [bk.book_id for bk in filtered_books]
+    #     love_books = BookCover.objects.filter(book_id__in=filtered_book_isbn)
+    # else:
+    love_books = BookCover.objects.filter(book_id__in=final_keyword_isbn_lst)
 
     love_book_list = list()
 
@@ -463,7 +463,10 @@ def auto_complete(request):
     return render(request, 'search/search.html')
 
 def profile(request): # 오른쪽 상단 로그인하면 나오는 프로필에 필요한 데이터를 위한 코드
-    username=request.GET['user_id']
+    try:
+        username=request.GET['user_id']
+    except:
+        username=request.GET.get('read-user-id')
     user_info=User.objects.filter(user_id=username).values('user_id','user_email','nickname')[0]
     book_history=BookHistory.objects.filter(user_id=username).values()
     read_book = len(book_history)
@@ -496,29 +499,44 @@ def history_register(request):
             messages.add_message(request, messages.ERROR, '책 id, 별점을 입력해 주세요')
 
             return redirect('history_register')
+
         else: # 중복으로 들어가 오류가 발생하지 않도록 동일한 book_id가 있다면 이미 등록한 책이라 나온다
             history_id='H' + user_id + book_id + 'y'
             db_history_exists=BookHistory.objects.filter(history_id=history_id).exists()
             if db_history_exists:
                 messages.add_message(request,messages.ERROR,'이미 등록한 책입니다.')
 
-            else:
-                messages.add_message(request, messages.SUCCESS, '등록되었습니다.')
-                book_history= BookHistory.objects.create(
-                    history_id='H' + user_id + book_id + 'y',
-                    user_id=user_id,
-                    book_id=book_id,
-                    score=score,
-                    start_date=start_date,
-                    end_date=end_date
-                )
+        # 만약 해당 책이 추천 도서 후보가 아니라면:
+        rcm_book_chk = BookDesc.objects.filter(book_id=book_id).exists()
 
-                book_history.save()
+        print(user_id, '맞자나??????')
+        if rcm_book_chk:
+            messages.add_message(request, messages.SUCCESS, '등록되었습니다.')
+            book_history= BookHistory.objects.create(
+                history_id='H' + user_id + book_id + 'y',
+                user_id=user_id,
+                book_id=book_id,
+                score=score,
+                start_date=start_date,
+                end_date=end_date
+            )
 
-            return redirect("history_register")
+            book_history.save()
+        else:
+            messages.add_message(request, messages.ERROR, '해당 책은 추천하는 도서에 등록되지 않아 추가가 불가능합니다.')
+
+
+        return redirect("history_register")
+
 
 def history(request):
-    user_name=request.GET.get('user_id')
+    try:
+        user_name = request.GET.get('read-user-id')
+        print('여기는 read-user-id')
+        print(read-user-id)
+    except:
+        user_name=request.GET.get('user_id')
+        print('여기는 user-id')
 
     his= BookHistory.objects.filter(user_id=user_name).values() #user_id 컬럼과 같은 값은 모든 값들을 가져와 his 변수에 저장
 
