@@ -3,6 +3,7 @@ $(function(){
          $('.id-check-container').empty()
         var username = $("input[name='username']").val()
 
+        console.log("유저네임", username)
         $.ajax({
             url: "/login/id_chk",
             data: {'user_id': username},
@@ -11,9 +12,7 @@ $(function(){
                 data=data['result']
 
                 var checkStr=''
-
-
-                checkStr +=   data
+                checkStr =   data
 
                 $('.id-check-container').html(checkStr);
 

@@ -118,11 +118,16 @@ def id_chk(request): # id 중복과 제한조건 체크
         print(len(user_name))
 
     elif (len(user_name) < 8) | (len(user_name) > 15):
-        messages.add_message(request, messages.ERROR, '아이디는 8글자 이상, 15글자 이하입니다')
-        return redirect('signup')
+        # messages.add_message(request, messages.ERROR, '아이디는 8글자 이상, 15글자 이하입니다')
+        # return redirect('signup')
+        json_data['result']='아이디는 8글자 이상, 15글자 이하입니다'
+        return JsonResponse(json_data)
 
 
     elif (user_name.islower() and any(user_name.isdigit() for user_name in user_name))==False: # 아이디는 영어와 숫자의 조합으로 제한하기 위해 사용
+        # messages.add_message(request, messages.ERROR, '아이디는 8글자 이상, 15글자 이하입니다')
+        # return redirect('signup')
+
         json_data['result']='아이디는 영어(소문자)와 숫자의 조합이어야 합니다'
         return JsonResponse(json_data)
 
