@@ -75,10 +75,9 @@ def delete(request, board_id):
     result_delete = Board.objects.filter(board_id=board_id).delete()
     # result_delete = MyBoard.objects.filter(id=id).delete() 한 결과는 튜플로 나옴
     # id가 id인 애를 filter로 가져와서 삭제
-    #print(result_delete) -> 결과: (1, {'myboard.MyBoard': 1})
-
+    #print(result_delete) -> 결과: (1, {'myboard.MyBoard': 1}))
     if result_delete[0]:  #result_delete의 반환값은 튜플인데 거기서 0번쨰 인덱스의 값이 있으면
-        return redirect('index')
+        return redirect('board')
     else:
         return  redirect('detail/'+board_id)
 

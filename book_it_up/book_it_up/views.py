@@ -84,7 +84,7 @@ def index(request):
     keyword_book_isbn = collection.find()
     
     hour_now = datetime.now().hour
-    print('현재시간은', hour_now)
+
     if 4 <= hour_now <= 16:
         final_dict['is_daytime'] = True
         keyword_list = morning_keywords
@@ -201,9 +201,9 @@ def get_info(request):
 
     try:
         desc = BookDesc.objects.filter(book_id=book_id).values("description1")[0]['description1']
-        print(desc)
+
     except:
-        print('정보없음')
+
         no_info = dict()
         no_info['all'] = [{'book_id' : "no_info"}]
         return JsonResponse(no_info)
@@ -392,7 +392,7 @@ def get_preference(request):
 # Test 페이지용 책 가져오는 함수 :
 def get_book(request):
     user_id = request.session.get('user_id')
-    print(user_id)
+
 
     # 사용자가 기존에 평가 내렸던 책은 제외하기
 
@@ -416,7 +416,7 @@ def search(request):
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
     # ajax 요청이라면 :
     if is_ajax:
-        print('하이하이하이')
+
         sqs = SearchQuerySet().autocomplete(content_auto=request.GET.get('q', ''))[:5]
         #sqs = SearchQuerySet().filter(content_auto=request.GET.get('q', ''))
 
@@ -477,7 +477,7 @@ def profile(request): # 오른쪽 상단 로그인하면 나오는 프로필에 
 
 def history_register(request):
     user_id = request.session.get('user_id')
-    print('history-user-id',user_id)
+
     data = {'user_id': user_id}
     if request.method=="GET": # get으로 요청이 오면 html 을 반환
         return render(request,'book_it_up/history.html',data)
@@ -509,7 +509,7 @@ def history_register(request):
         # 만약 해당 책이 추천 도서 후보가 아니라면:
         rcm_book_chk = BookDesc.objects.filter(book_id=book_id).exists()
 
-        print(user_id, '맞자나??????')
+
         if rcm_book_chk:
             messages.add_message(request, messages.SUCCESS, '등록되었습니다.')
             book_history= BookHistory.objects.create(
@@ -530,16 +530,11 @@ def history_register(request):
 
 
 def history(request):
-    try:
-        user_name = request.GET.get('read-user-id')
-        print('여기는 read-user-id')
-        print(read-user-id)
-    except:
-        user_name=request.GET.get('user_id')
-        print('여기는 user-id')
+    user_name = request.GET.get("user_id")
 
     his= BookHistory.objects.filter(user_id=user_name).values() #user_id 컬럼과 같은 값은 모든 값들을 가져와 his 변수에 저장
 
+    print(his)
     try:
         chk=request.GET.get('chk')
         datetime.sleep(1.5)
@@ -622,7 +617,9 @@ def history_delete(request):
 
 def bestbook(request):
 
-    book_avg = BookHistory.objects.values('book_id').filter(score__gte=4).annotate(score_avg=Avg('score'))
+    #book_avg = BookHistory.objects.values('book_id').filter(score__gte=4).annotate(score_avg=Avg('score'))
+    book_avg = BookHistory.objects.values('book_id').filter(score__gte=1).annotate(score_avg=Avg('score'))
+
 
     book_lst=[]
 

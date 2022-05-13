@@ -40,6 +40,7 @@ $(function(){
              $(".read-form-control[name='read-book-title']").val(title)
             }
         )
+
     })
 
 function updateHistory(index,bookId){
