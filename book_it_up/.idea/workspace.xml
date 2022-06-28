@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1ffe1ab-91c8-4c0a-bc7f-2890f8f98931" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../1차피드백.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/generic_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/generic_views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-haystack/haystack/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-haystack/haystack/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../forpie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../forpie/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../forpie/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../forpie/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../forpie/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
