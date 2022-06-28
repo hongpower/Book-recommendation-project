@@ -98,7 +98,7 @@
 
 
 
-
+![mainpage_whole_view](/Users/jisu/Downloads/mainpage_whole_view.gif)
 
 
 
