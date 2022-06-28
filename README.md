@@ -69,10 +69,12 @@
 
 ### 메인 페이지
 
-![mainpage_whole_view](/Users/jisu/Desktop/project/video/mainpage_whole_view.gif)
-
 
 
 ### 유저 페이지
 
-### ![my_page_whole_view](/Users/jisu/Desktop/project/video/my_page_whole_view.gif)
+
+
+### 추천 페이지
+
+### ![rcm_by_keyword_whole_view](/Users/jisu/Desktop/project/video/iloveimg-compressed/rcm_by_keyword_whole_view.gif)
