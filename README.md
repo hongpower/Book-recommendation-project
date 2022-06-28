@@ -1,4 +1,10 @@
-# 📚책itUp📚 - 맞춤별 도서 추천 서비스
+
+
+# 📚책itUp📚 
+
+# - 맞춤별 도서 추천 서비스-
+
+
 
 - 프로젝트 주제: 도서 데이터 수집 및 분석 후 컨텐츠 기반 도서 추천 서비스 개발
 
@@ -9,6 +15,8 @@
 
 
 
+
+
 ## 서비스 소개
 - 책itUp은 도서 선택에 어려움을 갖는 사용자를 대상으로 한 도서추천 서비스입니다. 
 - 총 249,650권의 도서 데이터를 가지고 있습니다. 이중 특정 조건을 만족하는 도서들만 선별해서 최종적으로 사용자에게 추천할 도서(분석을 진행할 도서)는 8,553권입니다. 
@@ -16,6 +24,8 @@
 - 유사도 분석을 활용한 컨텐츠 기반 추천 서비스 : 사용자가 도서에 대한 선호도를 선택하면 해당 책들과 유사도가 높은 책들을 사용자에게 추천합니다.
 - 토픽모델링을 기반으로한 추천 서비스 : 토픽 모델링을 통해 직접 레이블링한 키워드를 기반으로 사용자에게 도서를 추천합니다.
 - 이외에도 시간대에 따른 추천, 가벼운 책 추천 등 다양한 추천 서비스도 제공하고 있으며 도서 노트 작성, 커뮤니티 서비스 등 각종 부가 서비스도 포함하고 있습니다.
+
+
 
 
 
@@ -82,13 +92,19 @@
 
 - 책itUp 도서 랭킹, 로맨스 도서 추천, 가볍게 읽기 좋은 도서 추천, 시간대(낮/밤)별 도서 추천
 
-![mainpage_whole_view](https://user-images.githubusercontent.com/96896873/176129039-e56b6116-771c-4c5d-acac-f09b51b4160c.gif)
+  
+
+<img src="https://user-images.githubusercontent.com/96896873/176129039-e56b6116-771c-4c5d-acac-f09b51b4160c.gif" alt="mainpage_whole_view" style="zoom:67%;" />
+
+
+
+
 
 
 
 - 도서 이미지 클릭 시 세부 정보 확인 가능
 
-![detail_whole_view_real2](https://user-images.githubusercontent.com/96896873/176134682-8ca0182e-38bf-4964-be6a-7ee9d69eff0a.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176134682-8ca0182e-38bf-4964-be6a-7ee9d69eff0a.gif" alt="detail_whole_view_real2" style="zoom:80%;" />
 
 
 
@@ -97,7 +113,7 @@
 - 저자나 도서 이름으로 검색 후 도서 세부정보 확인 가능
 - 자동 완성 기능 포함
 
-![search](https://user-images.githubusercontent.com/96896873/176148185-d3a68897-a23e-4d9a-bc44-a93d2a5634f4.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176148185-d3a68897-a23e-4d9a-bc44-a93d2a5634f4.gif" alt="search" style="zoom:80%;" />
 
 
 
@@ -108,8 +124,7 @@
 - 좋아요/싫어요/찜기능 
   - 싫어요/좋아요는 하나만 선택 가능, 찜기능은 무관
 
-
-![like_dislike_function](https://user-images.githubusercontent.com/96896873/176140630-887196f3-bb86-48c5-ba04-e59419227c90.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176140630-887196f3-bb86-48c5-ba04-e59419227c90.gif" alt="like_dislike_function" style="zoom:80%;" />
 
 
 
@@ -123,20 +138,20 @@
 
 - 스릴러 도서 선호 유저에게 추천된 도서:
 
-![rcm_iamjoker](https://user-images.githubusercontent.com/96896873/176136492-2c87810e-0a6e-42be-964b-ed477fa5fb2e.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176136492-2c87810e-0a6e-42be-964b-ed477fa5fb2e.gif" alt="rcm_iamjoker" style="zoom:80%;" />
 
 
 
 - 자기관리, 개발서, 수필 선호 유저에게 추천된 도서:
 
-<img src="https://user-images.githubusercontent.com/96896873/176138062-8d68f349-aa90-4d01-885f-48b791ebed6c.gif" alt="rcm_neighbor" style="zoom: 43%;" />
+<img src="https://user-images.githubusercontent.com/96896873/176138062-8d68f349-aa90-4d01-885f-48b791ebed6c.gif" alt="rcm_neighbor" style="zoom: 35%;" />
 
 
 
 - 토픽 기반 추천
   - 랜덤으로 나오는 10개의 토픽을 선택하면 해당 토픽 기반으로 추천
 
-![rcm_keyword](https://user-images.githubusercontent.com/96896873/176138759-f8e98091-0cb3-4ce7-876f-60ff1fbd6be3.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176138759-f8e98091-0cb3-4ce7-876f-60ff1fbd6be3.gif" alt="rcm_keyword" style="zoom:80%;" />
 
 
 
@@ -146,7 +161,7 @@
 
 - 마이페이지
 
-![my_page](https://user-images.githubusercontent.com/96896873/176139644-bb09aca8-9e9f-4233-a5c3-d1f752cf0883.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176139644-bb09aca8-9e9f-4233-a5c3-d1f752cf0883.gif" alt="my_page" style="zoom:80%;" />
 
 
 
@@ -157,7 +172,7 @@
 - 내 서재 서비스
 - 서재 도서 등록 : 읽은 도서를 선택 후 해당 도서에 대한 별점 및 독서시작/종료 날짜 기록 가능
 
-![library_post](https://user-images.githubusercontent.com/96896873/176143463-1b6af8f5-b6ff-47a8-8a08-462bb73a348d.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176143463-1b6af8f5-b6ff-47a8-8a08-462bb73a348d.gif" alt="library_post" style="zoom:80%;" />
 
 - 서재 조회/수정/삭제
 
@@ -168,8 +183,8 @@
 - 커뮤니티
 - 도서 노트 조회 및 작성
 
-![write_note](https://user-images.githubusercontent.com/96896873/176144011-8ea045fb-1417-48d6-812e-c23266565517.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176144011-8ea045fb-1417-48d6-812e-c23266565517.gif" alt="write_note" style="zoom:80%;" />
 
 - 도서 노트 수정 및 삭제
 
-![edit_delete_note](https://user-images.githubusercontent.com/96896873/176144002-1b911c9f-fbbd-43c1-9d42-f4c59abaa791.gif)
+<img src="https://user-images.githubusercontent.com/96896873/176144002-1b911c9f-fbbd-43c1-9d42-f4c59abaa791.gif" alt="edit_delete_note" style="zoom:80%;" />
