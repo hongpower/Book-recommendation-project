@@ -94,11 +94,9 @@
 
   
 
-<img src="https://user-images.githubusercontent.com/96896873/176129039-e56b6116-771c-4c5d-acac-f09b51b4160c.gif" alt="mainpage_whole_view" style="zoom:67%;" />
+  ![mainpage_whole_view](https://user-images.githubusercontent.com/96896873/176173391-a3f57cd9-5dbf-4370-8179-4929dcd4bb4e.gif)
 
-
-
-![mainpage_whole_view](/Users/jisu/Downloads/mainpage_whole_view.gif)
+  
 
 
 
