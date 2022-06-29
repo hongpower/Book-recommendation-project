@@ -1,5 +1,7 @@
 
 
+<br>
+
 # 📚책itUp📚 - 도서 추천 서비스
 
 
@@ -35,7 +37,6 @@
 | 조성헌       | WEB 기능구현(BE), DB구축, 데이터 파이프라인 구축, 서비스 배포 |
 | 조완제       | 텍스트 분석 및 토픽 모델링                                   |
 | 홍동수       | 텍스트 전처리, 유사도 분석, 토픽 모델링                      |
-|              |                                                              |
 
 <br>
 
@@ -43,7 +44,7 @@
 
 ### 프로젝트 세부자료
 
-- [WBS]()
+- [WBS](https://github.com/hongpower/Book-recommendation-project/blob/master/Documents/WBS.png)
 - [추천용 도서 선정기준](https://github.com/hongpower/Book-recommendation-project/blob/master/Documents/filtering_conditions.md)
 
 <br>
@@ -61,7 +62,8 @@
 | Back   | Hadoop, Spark SQL, Elasticsearch, Django |
 | Server | AWS                                      |
 | DB     | MySQL, MongoDB, Elasticsearch            |
-| <br/>  |                                          |
+
+<br>
 
 ### ERD
 
