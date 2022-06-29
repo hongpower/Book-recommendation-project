@@ -1,29 +1,36 @@
 h2{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 100px;
+    padding-bottom: 30px;
 }
 #modal h2{
     padding-top: 0px;
     padding-bottom: 0px;
 }
-
 #rank-books h2{
-    padding-top: 30px;
+    padding-top: 80px;
     padding-bottom: 0px;
 }
 #rank-books{
-    height: 700px;
+    height: 600px;
 }
 #rank-container{
 }
 .rank{
-    width: 17%;
     text-align: center;
     display: inline-block;
-    margin: 5px;
+    margin: 13px;
+
+    width: 200px;
+    height: 400px;
 }
+
+#timely-books{
+    margin-bottom: 100px;
+}
+/*
 .rank:nth-child(1){
     width: 18%;
+
 }
 .rank:nth-child(2){
     width: 18%;
@@ -36,7 +43,7 @@ h2{
 }
 .rank:nth-child(5){
     width: 18%;
-}
+}*/
 
 .rank *{
 }
@@ -52,8 +59,8 @@ h2{
 .rank-cover img{
     box-shadow: 5px 5px 3px rgba(0,0,0,0.5);
     margin-bottom: 20px;
-    width: 90%;
-    height: 40%;
+    width: 135px;
+    height: 190px;
     cursor: pointer;
     transition: all .4s ease-in-out;
 }
@@ -72,6 +79,7 @@ h2{
 .rank-score-avg, .rank-history-cnt{
     font-size: 8pt;
 }
+/*
 #rank1 > div{
     width: 70%;
     height: 70%;
@@ -83,6 +91,10 @@ h2{
 #rank3 > div{
     width: 70%;
     height: 70%;
+}*/
+.rank > div{
+    width: 80%;
+    height: 80%;
 }
 
 #gold-medal{

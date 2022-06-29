@@ -12,3 +12,10 @@ h3{
 p{
     font-size: 9pt;
 }
+article:not(#modal-article){
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+#modal-article{
+    height: 0px;
+}
